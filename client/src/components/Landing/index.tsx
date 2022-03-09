@@ -1,1 +1,6 @@
 export {default as Navbar} from './LandingSubComponents/Navbar'
+export {default as Sidebar} from './LandingSubComponents/Sidebar'
+export {default as HeroSection} from './LandingSubComponents/HeroSection'
+export {default as FeaturesSection} from './LandingSubComponents/FeaturesSection'
+export {default as ViewFamJam} from './LandingSubComponents/ViewFamJam' 
+export {default as Footer} from './LandingSubComponents/Footer'

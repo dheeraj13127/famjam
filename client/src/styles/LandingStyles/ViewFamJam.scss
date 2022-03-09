@@ -1,0 +1,75 @@
+.viewFamJamContainer{
+    margin-top: 125px !important;
+    padding: 20px 50px !important;
+    margin-bottom: 120px !important;
+}
+.viewFamjamRow{
+    background: white !important;
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69); 
+    box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69);
+    padding: 45px 50px !important;
+}
+.viewFamjamPlayer{
+    margin-top: 50px !important;
+    width: 600px !important;
+    height: 400px !important;
+}
+.viewFamjamPlayerInfo{
+    margin-top: 50px !important;
+    font-family: 'Roboto',sans-serif !important;
+}
+.viewFamjamPlayerHeader{
+    font-family: 'Roboto',sans-serif !important;
+
+    font-size: 30px !important;
+}
+.viewFamjamPlayerHeaderInfo{
+    font-family: 'Roboto',sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 600;
+}
+.viewFamjamAuthBtn{
+    border: 2px solid black !important;
+    font-family: 'Inter',sans-serif !important;
+    background: transparent !important;
+    font-size: 13px !important;
+    margin-top: 50px !important;
+}
+.viewFamjamAuthBtn:hover{
+    background: black !important;
+    color: white !important;
+    border: 2px solid black !important;
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important; 
+    box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important;
+}
+.viewFamJamCard{
+    margin-top: 30px!important;
+}
+.viewFamJamCardHeader
+{ color: #5227D1 !important;
+    font-family: 'Roboto',sans-serif !important;
+}
+.viewFamJamEmbed{
+    border-radius: 10px !important;
+}
+@media only screen and (max-width: 600px) {
+
+    .viewFamJamContainer{
+        margin-top: 75px !important;
+        padding: 20px 30px !important;
+    }
+    .viewFamjamRow{
+        padding: 40px 0px !important;
+    }
+    .viewFamjamPlayerHeader{
+        font-size: 20px !important;
+    }
+    .viewFamjamPlayerHeaderInfo{
+        font-size: 15px !important;
+    }
+}
+@media only screen and (min-width:601px) and (max-width: 768px) {
+  
+    
+}

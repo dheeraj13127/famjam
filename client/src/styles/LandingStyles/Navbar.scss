@@ -1,0 +1,32 @@
+.landingNav{
+    border-radius: 0px !important;
+    transition: all 0.3s ease;
+    background-color: #ffffff !important;
+  
+
+
+}
+.landingNavBrandImage{
+    height: 50px !important;
+}
+.landingNavAuthBtns{
+    border: 2px solid black !important;
+    font-family: 'Inter',sans-serif !important;
+    background: transparent !important;
+    font-size: 13px !important;
+}
+.landingNavAuthBtns:hover{
+    background: black !important;
+    color: white !important;
+    border: 2px solid black !important;
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important; 
+    box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important;
+}
+.ui.menu .item:before{
+    background: none !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+ 
+  }
