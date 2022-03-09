@@ -75,7 +75,7 @@ function HeroSection() {
             textAlign="center"
           >
             <Header as="h1" textAlign="center" className="heroSectionHeader">
-            <span style={{color:"#5227D1"}}>Welcome to</span> &nbsp; 
+            <span style={{color:"#5227D1"}}>Welcome to</span> &nbsp;<br/> 
               <Typist
                 sentences={[`FamJam `]}
                 loop={true}
