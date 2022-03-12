@@ -43,7 +43,7 @@ export const googleSignIn =
 export const userSignUp =
   (response: signUpType, navigate: any) => async (dispatch: any) => {
     axios
-      .post("http://localhost:7000/auth/signUp", response)
+      .post("https://famjams.herokuapp.com/auth/signUp", response)
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
@@ -64,7 +64,7 @@ export const userSignUp =
   export const userSignIn =
   (response: signInType, navigate: any) => async (dispatch: any) => {
     axios
-      .post("http://localhost:7000/auth/signIn", response)
+      .post("https://famjams.herokuapp.com/auth/signIn", response)
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;

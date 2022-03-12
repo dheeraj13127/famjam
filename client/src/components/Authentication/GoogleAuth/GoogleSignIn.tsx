@@ -11,7 +11,7 @@ function GoogleSignIn() {
   const responseSuccessGoogle = async (resp: any) => {
     await axios({
       method: "POST",
-      url: "http://localhost:7000/auth/googleSignIn",
+      url: "https://famjams.herokuapp.com/auth/googleSignIn",
       data: { tokenId: resp.tokenId },
     })
       .then((res) => {
