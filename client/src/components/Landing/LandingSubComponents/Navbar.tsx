@@ -22,14 +22,14 @@ function Navbar(props: NavInput) {
         </Menu.Item>
         <Menu.Menu position="right" className="mobile hidden">
           <Menu.Item>
-            <Button size="mini" className="landingNavAuthBtns">
+            <a href="/signIn"><Button size="mini" className="landingNavAuthBtns">
               Sign In
-            </Button>
+            </Button></a>
           </Menu.Item>
           <Menu.Item>
-            <Button size="mini" className="landingNavAuthBtns ">
+            <a href="/signUp"><Button size="mini" className="landingNavAuthBtns ">
               Sign Up
-            </Button>
+            </Button></a>
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu position="right" className="mobile only">

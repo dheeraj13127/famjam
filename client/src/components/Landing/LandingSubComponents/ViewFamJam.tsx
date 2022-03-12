@@ -30,7 +30,7 @@ function ViewFamJam() {
                 <Image floated="right" size="mini" src={famjam} />
                 <Card.Header className="viewFamJamCardHeader">Already a FamJamian ?</Card.Header>
                 <Card.Meta>Just hit the button below</Card.Meta>
-                <Button fluid size="medium" className="heroSectionAuthBtn">Sign In</Button>
+                <a href="/signIn"><Button fluid size="medium" className="heroSectionAuthBtn">Sign In</Button></a>
               </Card.Content>
             </Card>
             <Card  centered className="viewFamJamCard mobile tablet only">
@@ -38,7 +38,7 @@ function ViewFamJam() {
                 <Image floated="right" size="mini" src={famjam} />
                 <Card.Header className="viewFamJamCardHeader">New to FamJam?</Card.Header>
                 <Card.Meta>Just hit the button below</Card.Meta>
-                <Button fluid size="medium" className="heroSectionAuthBtn">Sign Up</Button>
+                <a href="/signUp"><Button fluid size="medium" className="heroSectionAuthBtn">Sign Up</Button></a>
               </Card.Content>
             </Card>
             <Card  className="viewFamJamCard mobile hidden tablet hidden ">
@@ -46,7 +46,7 @@ function ViewFamJam() {
                 <Image floated="right" size="mini" src={famjam} />
                 <Card.Header className="viewFamJamCardHeader">Already a FamJamian ?</Card.Header>
                 <Card.Meta>Just hit the button below</Card.Meta>
-                <Button fluid size="medium" className="heroSectionAuthBtn">Sign In</Button>
+                <a href="/signIn"><Button fluid size="medium" className="heroSectionAuthBtn">Sign In</Button></a>
               </Card.Content>
             </Card>
             <Card   className="viewFamJamCard mobile hidden tablet hidden">
@@ -54,7 +54,7 @@ function ViewFamJam() {
                 <Image floated="right" size="mini" src={famjam} />
                 <Card.Header className="viewFamJamCardHeader">New to FamJam?</Card.Header>
                 <Card.Meta>Just hit the button below</Card.Meta>
-                <Button fluid size="medium" className="heroSectionAuthBtn">Sign Up</Button>
+                <a href="/signUp"><Button fluid size="medium" className="heroSectionAuthBtn">Sign Up</Button></a>
               </Card.Content>
             </Card>
             </Card.Group>

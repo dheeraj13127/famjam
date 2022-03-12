@@ -58,7 +58,7 @@ function HeroSection() {
                 />
               </motion.div>
 
-              <Button size="medium" className="heroSectionAuthBtn">Let's Go</Button>
+              <a href="/signIn"><Button size="medium" className="heroSectionAuthBtn">Let's Go</Button></a>
           </Grid.Column>
           <Grid.Column
             computer={8}
@@ -102,7 +102,7 @@ function HeroSection() {
                 />
               </motion.div>
 
-              <Button size="medium" className="heroSectionAuthBtn">Let's Go</Button>
+              <a href="/signIn"><Button size="medium" className="heroSectionAuthBtn">Let's Go</Button></a>
           </Grid.Column>
         </Grid.Row>
       </Grid>

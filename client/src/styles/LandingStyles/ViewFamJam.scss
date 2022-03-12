@@ -45,6 +45,9 @@
 }
 .viewFamJamCard{
     margin-top: 30px!important;
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important; 
+    box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important;
 }
 .viewFamJamCardHeader
 { color: #5227D1 !important;
@@ -52,6 +55,8 @@
 }
 .viewFamJamEmbed{
     border-radius: 10px !important;
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important; 
+    box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important;
 }
 @media only screen and (max-width: 600px) {
 

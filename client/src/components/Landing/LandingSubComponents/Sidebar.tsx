@@ -24,14 +24,14 @@ function Sidebar(props: sidebarProps) {
           <Grid.Column textAlign="center">
           <ul className="sidebarContent">
           <li className="item">
-            <Button fluid color="black">
+            <a href="/signIn"><Button fluid color="black">
               Sign In
-            </Button>
+            </Button></a>
           </li>
           <li className="item">
-            <Button fluid color="black">
+            <a href="/signIn"><Button fluid color="black">
               Sign Up
-            </Button>
+            </Button></a>
           </li>
         </ul>
           </Grid.Column>

@@ -1,0 +1,72 @@
+.authenticationBackground{
+    background-color: #f89b9e !important;
+    background-image: linear-gradient(315deg, #f89b9e 0%, #c9d9ff 74%) !important;
+    
+}
+.signUpContainer{
+    margin-top: 50px !important;
+    padding: 30px 50px !important;
+}
+.signupFormContainer{
+    background-color: black !important;
+    margin: 90px 0px !important;
+    padding: 20px 40px !important;
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0px 0px 17px 7px rgba(255,255,255,0.62) !important; 
+    box-shadow: 0px 0px 17px 7px rgba(255,255,255,0.62) !important;
+}
+.inputBox{
+    margin-top: 25px !important;
+}
+.signUpFormHeader{
+    color: white !important;
+    font-family: 'Poppins',sans-serif !important;
+}
+.signUpForm{
+    margin-top: 50px !important;
+}
+.singUpButton{
+    background-color: white !important;
+    border: 1px solid white !important;
+}
+.singUpButton:hover{
+    background-color: black !important;
+    color: white !important;
+}
+.orText{
+    font-family: 'Poppins',sans-serif !important;
+    color: white !important;    
+    margin-top: 20px !important;
+
+}
+.googleSignUpButton{
+    background-color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    border: 1px solid white !important;
+ 
+}
+.googleSignUpButton:hover{
+    background-color: black !important;
+    color: white !important;
+}
+.googleBox{
+    display: flex !important;
+    justify-content: center !important;
+}
+.signUpRedirect{
+    margin-top: 20px !important;
+    color: white !important;
+    font-family: 'Poppins',sans-serif !important;
+}
+@media only screen and (max-width: 600px) {
+    
+    .signUpContainer{
+        
+        padding: 20px 10px !important;
+    }
+    .signupFormContainer{
+        padding: 20px 20px !important;
+    }
+
+}

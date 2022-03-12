@@ -2,7 +2,7 @@ import React from "react";
 import ParticlesBg from "particles-bg";
 import "../../../styles/LandingStyles/FeaturesSection.scss";
 import {featuresData} from './featuresData/FeaturesData'
-import { Grid, Header, Card, Icon,Button } from "semantic-ui-react";
+import { Grid, Header, Card,Button } from "semantic-ui-react";
 
 function FeaturesSection() {
   return (
@@ -33,7 +33,7 @@ function FeaturesSection() {
                 <Card.Header className="cardHeader">{feat.name}</Card.Header>
               </Card.Content>
               <Card.Content extra>
-                <a href="/">
+                <a href="/signIn">
                   <Button fluid className="featuresSectionGoBtn">{feat.info}</Button>
                 </a>
               </Card.Content>
