@@ -42,6 +42,9 @@ export const googleSignIn =
   };
 export const userSignUp =
   (response: signUpType, navigate: any) => async (dispatch: any) => {
+    toast('Will take few seconds',{
+        icon:'⏳'
+      })
     await axios
       .post("https://famjams.herokuapp.com/auth/signUp", response)
       .then((res) => {
@@ -63,6 +66,9 @@ export const userSignUp =
   };
   export const userSignIn =
   (response: signInType, navigate: any) => async (dispatch: any) => {
+    toast('Will take few seconds',{
+        icon:'⏳'
+      })
    await axios
       .post("https://famjams.herokuapp.com/auth/signIn", response)
       .then((res) => {

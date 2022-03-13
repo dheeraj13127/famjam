@@ -9,6 +9,9 @@ function GoogleSignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const responseSuccessGoogle = async (resp: any) => {
+    toast('Will take few seconds',{
+      icon:'⏳'
+    })
     await axios({
       method: "POST",
       url: "https://famjams.herokuapp.com/auth/googleSignIn",
