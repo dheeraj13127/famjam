@@ -116,6 +116,7 @@ exports.googleLogin = async (req, res) => {
 };
 
 exports.signUpWithEmail = async (req, res) => {
+  
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -146,7 +147,7 @@ exports.signUpWithEmail = async (req, res) => {
       message: "Success",
     });
   } catch (e) {
-    res.status(500).json({ success: false, error: e.message });
+    res.status(500).json({ success: false, message:"Something went wrong !" });
   }
 };
 

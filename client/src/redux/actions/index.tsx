@@ -42,19 +42,19 @@ export const googleSignIn =
   };
 export const userSignUp =
   (response: signUpType, navigate: any) => async (dispatch: any) => {
-    axios
+    await axios
       .post("https://famjams.herokuapp.com/auth/signUp", response)
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
         localStorage.setItem("famjamAuthToken", token);
         localStorage.setItem("famJamUserId", userId);
+
+        toast.success("Successfully signed up !");
         dispatch({
           type: SIGNUP_SUCCESS,
           payload: userId,
         });
-
-        toast.success("Successfully signed up !");
         setTimeout(() => {
           navigate("/dashboard");
         }, 2500);
@@ -63,19 +63,20 @@ export const userSignUp =
   };
   export const userSignIn =
   (response: signInType, navigate: any) => async (dispatch: any) => {
-    axios
+   await axios
       .post("https://famjams.herokuapp.com/auth/signIn", response)
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
         localStorage.setItem("famjamAuthToken", token);
         localStorage.setItem("famJamUserId", userId);
+        toast.success("Successfully signed in !");
         dispatch({
           type: SIGNUP_SUCCESS,
           payload: userId,
-        });
+        }); 
 
-        toast.success("Successfully signed up !");
+       
         setTimeout(() => {
           navigate("/dashboard");
         }, 2500);
