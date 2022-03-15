@@ -21,7 +21,7 @@ function GoogleSignUp() {
        
         dispatch(googleSignUp(res, navigate));
       })
-      .catch((err) =>toast.error("Something went wrong !"));
+      .catch((err) =>toast.error(err.response.data.message));
   };
   const responseFailureGoogle = (resp: object) => {
     toast.error("Something went wrong !");

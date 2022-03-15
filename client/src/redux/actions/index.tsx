@@ -8,6 +8,7 @@ export type actionType = {
 };
 export const googleSignUp =
   (response: googleSignUpType, navigate: any) => async (dispatch: any) => {
+    toast.success("Successfully signed up !");
     const token = response.data.token;
     const userId = response.data.user._id;
 
@@ -18,13 +19,14 @@ export const googleSignUp =
       payload: userId,
     });
 
-    toast.success("Successfully signed up !");
+  
     setTimeout(() => {
       navigate("/dashboard");
     }, 2500);
   };
 export const googleSignIn =
   (response: googleSignUpType, navigate: any) => async (dispatch: any) => {
+    toast.success("Successfully signed in !");
     const token = response.data.token;
     const userId = response.data.user._id;
 
@@ -35,7 +37,7 @@ export const googleSignIn =
       payload: userId,
     });
 
-    toast.success("Successfully signed in !");
+
     setTimeout(() => {
       navigate("/dashboard");
     }, 2500);

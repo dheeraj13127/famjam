@@ -32,9 +32,8 @@ exports.googleSignUp = async (req, res) => {
                 { expiresIn: "31556926" }
               );
               const { _id, userName, email, firstName, lastName } = user;
-              res.json({
-                token,
-                user: { _id, userName, email, firstName, lastName },
+              return res.status(400).json({
+                message:"Email address already exists"
               });
             } else {
               let password = iat + email + process.env.JWT_SIGNIN_KEY;
