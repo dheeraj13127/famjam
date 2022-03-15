@@ -6,4 +6,4 @@ router.post('/signIn',signInWithEmail)
 router.post('/googleSignIn',googleLogin)
 router.post('/googleSignUp',googleSignUp)
 router.post('/getProfile',getProfile)
-module.exports=router  
+module.exports=router   
