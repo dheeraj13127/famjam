@@ -13,9 +13,9 @@ exports.googleSignUp = async (req, res) => {
   await client
     .verifyIdToken({
       idToken: tokenId,
-      audience:process.env.GOOGLE_CLIENT_ID
+      requiredAudience:process.env.GOOGLE_CLIENT_ID
     })
-    .then((resp) => { 
+    .then((resp) => {  
     
       const { email_verified, name, email, given_name, family_name, iat,picture } =
         resp.payload;
@@ -78,11 +78,12 @@ exports.googleSignUp = async (req, res) => {
     });
 }; 
 exports.googleLogin = async (req, res) => {
+
   const { tokenId } = req.body;
   client
     .verifyIdToken({
       idToken: tokenId,
-      audience:process.env.GOOGLE_CLIENT_ID
+      requiredAudience:"1034920183548-99fe7306jpak3rgseithc9ba4kksdeek.apps.googleusercontent.com"
     })
     .then((resp) => {
       const { email_verified, name, email, given_name, family_name, iat } =
