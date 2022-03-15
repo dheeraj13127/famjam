@@ -5,6 +5,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const { OAuth2Client } = require("google-auth-library");
+
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID,process.env.GOOGLE_CLIENT_SECRET);
 
 exports.googleSignUp = async (req, res) => { 
@@ -40,7 +41,7 @@ exports.googleSignUp = async (req, res) => {
               let newUser = new User({
                 firstName: given_name,
                 lastName: family_name,
-                userName: given_name + family_name + iat,
+                userName: given_name + family_name,
                 email,
                 password,
                 profilePicUrl:picture,
@@ -178,6 +179,21 @@ exports.signInWithEmail = async (req, res) => {
       .status(200)
       .json({ success: true, accessToken: token, message: "Welcome back !" });
   } catch (e) {
-    res.status(500).json({ success: false, error: e.message });
+    res.status(500).json({ success: false, message:"Something went wrong !" });
   }
-};
+}; 
+
+exports.getProfile=async(req,res)=>{
+
+  const {userId}=req.body
+  
+  try{ 
+  
+    User.findById({_id:userId})
+    .then(resp=>  res.status(200).json({user:resp}))
+  
+  }
+  catch(e){
+    res.status(500).json({ success: false, message:"Something went wrong !" });
+  }
+}   

@@ -1,5 +1,5 @@
-import Reac,{useState} from "react";
-import { Button, Container, Grid,Header,Input } from "semantic-ui-react";
+import React,{useState} from "react";
+import { Button, Container, Divider, Grid,Header,Input } from "semantic-ui-react";
 import { AuthNavbar, GoogleSignIn } from ".";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -60,7 +60,7 @@ const onFormSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
                 </div>
               </form>
              
-                <p className="orText">or</p>
+              <Divider className="orText" horizontal>or</Divider>
                 <div className="inputBox googleBox">
                   <GoogleSignIn/>
                 </div>

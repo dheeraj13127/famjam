@@ -1,4 +1,4 @@
-import { GOOGLE_SIGNUP_SUCCESS, SIGNUP_SUCCESS } from "../constants/constants";
+import { GET_USER_PROFILE, GOOGLE_SIGNUP_SUCCESS, SIGNUP_SUCCESS } from "../constants/constants";
 import toast from "react-hot-toast";
 import { googleSignUpType, signInType, signUpType } from "../actionTypes/types";
 import axios from "axios";
@@ -85,9 +85,22 @@ export const userSignUp =
        
         setTimeout(() => {
           navigate("/dashboard");
-        }, 2500);
+        }, 2500); 
       })
       .catch((err) => {
  
           toast.error(err.response.data.message)});
   };
+
+  export const getUserProfile=(resp:any)=>async(dispatch:any)=>{
+
+    await axios.post("https://famjams.herokuapp.com/auth/getProfile",resp)
+    .then(res=>{
+     
+      dispatch({
+        type:GET_USER_PROFILE,
+        payload:res.data.user
+      })
+    })
+    .catch(err=>console.log(err))
+  }

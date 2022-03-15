@@ -5,6 +5,7 @@ import landingHero from "../../../assets/other/heroLanding.png";
 import Typist from "react-text-typist";
 import { motion } from "framer-motion";
 import famjam from '../../../assets/logos/famjamlogo.png'
+
 function HeroSection() {
   const bombVar = {
     animate1: {

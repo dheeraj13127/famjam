@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Grid, Header, Input } from "semantic-ui-react";
+import { Button, Container, Divider, Grid, Header, Input } from "semantic-ui-react";
 import { AuthNavbar, GoogleSignUp } from ".";
 import "../../styles/AuthenticationStyles/Authentication.scss";
 import { Footer } from "../Landing";
@@ -150,8 +150,8 @@ function SignUp() {
                     <Button className="singUpButton">SignUp</Button>
                   </div>
                   </form>
-                
-                  <p className="orText">or</p>
+                  <Divider className="orText" horizontal>or</Divider>
+                  
                   <div className="inputBox googleBox">
                     <GoogleSignUp />
                   </div>
