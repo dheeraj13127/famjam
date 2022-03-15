@@ -31,7 +31,7 @@ export const googleSignIn =
     localStorage.setItem("famjamAuthToken", token);
     localStorage.setItem("famJamUserId", userId);
     dispatch({
-      type: GOOGLE_SIGNUP_SUCCESS,
+      type: GOOGLE_SIGNUP_SUCCESS, 
       payload: userId,
     });
 
