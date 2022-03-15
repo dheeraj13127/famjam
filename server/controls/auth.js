@@ -82,8 +82,7 @@ exports.googleLogin = async (req, res) => {
   client
     .verifyIdToken({
       idToken: tokenId,
-      audience:
-        "550449438201-3fbk3ajdsdp17gqm6gfiqmb3lvq5rnmm.apps.googleusercontent.com",
+      audience:process.env.GOOGLE_CLIENT_ID
     })
     .then((resp) => {
       const { email_verified, name, email, given_name, family_name, iat } =
