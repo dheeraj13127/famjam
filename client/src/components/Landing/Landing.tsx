@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { HeroSection, Navbar,FeaturesSection, ViewFamJam,Footer } from ".";
-import cx from "classnames";
-
 import "../../styles/LandingStyles/Landing.scss";
 
 function Landing() {

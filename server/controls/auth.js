@@ -23,7 +23,7 @@ exports.googleSignUp = async (req, res) => {
         User.findOne({ email }).exec((err, user) => {
           if (err) {
            
-            return res.status(400).json({ message: "Something went wrong!" });
+            return res.status(400).json({ message: "Something went wrong !" });
           } else {
             if (user) {
               const token = jwt.sign(
@@ -82,7 +82,7 @@ exports.googleLogin = async (req, res) => {
   client
     .verifyIdToken({
       idToken: tokenId,
-      requiredAudience:"1034920183548-99fe7306jpak3rgseithc9ba4kksdeek.apps.googleusercontent.com"
+      requiredAudience:process.env.GOOGLE_CLIENT_ID
     })
     .then((resp) => {
       const { email_verified, name, email, given_name, family_name, iat } =
@@ -188,7 +188,7 @@ exports.getProfile=async(req,res)=>{
   
   try{ 
   
-    User.findById({_id:userId})
+    await User.findById({_id:userId})
     .then(resp=>  res.status(200).json({user:resp}))
   
   }
@@ -196,3 +196,16 @@ exports.getProfile=async(req,res)=>{
     res.status(500).json({ success: false, message:"Something went wrong !" });
   }
 }   
+
+exports.getFamFriends=async(req,res)=>{
+
+  try{
+    const friends=await User.find({
+      famFriends:{$in:[req.params.userId]}
+  })
+  res.status(200).json(friends)
+  }
+  catch(e){
+    res.status(500).json({ success: false, message:"Something went wrong !" });
+  }
+}

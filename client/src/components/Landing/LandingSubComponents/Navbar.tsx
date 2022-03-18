@@ -22,23 +22,27 @@ function Navbar(props: NavInput) {
         </Menu.Item>
         <Menu.Menu position="right" className="mobile hidden">
           <Menu.Item>
-            <a href="/signIn"><Button size="mini" className="landingNavAuthBtns">
-              Sign In
-            </Button></a>
+            <a href="/signIn">
+              <Button size="mini" className="landingNavAuthBtns">
+                Sign In
+              </Button>
+            </a>
           </Menu.Item>
           <Menu.Item>
-            <a href="/signUp"><Button size="mini" className="landingNavAuthBtns ">
-              Sign Up
-            </Button></a>
+            <a href="/signUp">
+              <Button size="mini" className="landingNavAuthBtns ">
+                Sign Up
+              </Button>
+            </a>
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu position="right" className="mobile only">
           <Menu.Item>
-            {props.toggle ? (
-              <Icon onClick={props.toggleMenu} name="close" />
-            ) : (
-              <Icon onClick={props.toggleMenu} name="bars" />
-            )}
+            <Button.Group>
+            <a href="/signIn"> <Button size="mini" secondary>Sign In</Button></a>
+              <Button.Or />
+              <a href="/signUp"> <Button size="mini" secondary>Sign Up</Button></a>
+            </Button.Group>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

@@ -5,20 +5,21 @@
   
   .pusher > div {
     position: absolute;
-    top: 47px;
-    bottom: 40px;
-    overflow-y: auto;
+    top: 45px;
+    bottom: 45px;
+    overflow-y: scroll !important;
     width: 100%;
   }
   .dashboardSidebarLeftMenu{
-      width: 200px !important;
+      width: 250px !important;
     
   }
-  .dashboardSidebarBox{
-    margin-top: 75px !important;
-  }
+
   .dashboardSidebarRightMenu{
-    width: 200px !important;
+    width: 250px !important;
+}
+.dashboardSidebarBox{
+  margin-top: -10px !important;
 }
   .dashboardSidebarMenuItem{
       margin-top: 15px !important;
@@ -63,6 +64,13 @@
 .friendName{
   color: #ffffff !important;
 }
-@media only screen and (max-width: 768px) {
- 
+@media only screen and (max-width: 1700px) {
+  .dashboardSidebarLeftMenu{
+    width: 200px !important;
+  
+}
+
+.dashboardSidebarRightMenu{
+  width: 200px !important;
+}
   }

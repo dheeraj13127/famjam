@@ -1,0 +1,18 @@
+.noMessageLoader{
+   margin-top: 150px !important;
+}
+.noMessageHeader{
+    color:white !important;
+    font-family: 'Poppins',sans-serif !important;
+}
+.noMessageButtonContainer{
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 30px;
+    font-family: 'Poppins',sans-serif !important;
+}
+@media only screen and (max-width: 600px) {
+   .noMessageHeader{
+       font-size: 18px !important;
+   }
+}

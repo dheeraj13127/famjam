@@ -1,7 +1,8 @@
-import { GET_USER_PROFILE, GOOGLE_SIGNUP_SUCCESS, SIGNUP_SUCCESS } from "../constants/constants";
+import { CURRENT_FRIEND_MESSAGE, GET_CONVERSATIONS, GET_FAM_FRIENDS, GET_USER_PROFILE, GOOGLE_SIGNUP_SUCCESS, SET_CURRENT_CONVERSATIONS, SIGNUP_SUCCESS } from "../constants/constants";
 import toast from "react-hot-toast";
-import { googleSignUpType, signInType, signUpType } from "../actionTypes/types";
+import { famFriendsType, googleSignUpType, signInType, signUpType } from "../actionTypes/types";
 import axios from "axios";
+
 export type actionType = {
   type: string;
   payload: string | object | undefined;
@@ -12,8 +13,8 @@ export const googleSignUp =
     const token = response.data.token;
     const userId = response.data.user._id;
 
-    localStorage.setItem("famjamAuthToken", token);
-    localStorage.setItem("famJamUserId", userId);
+    sessionStorage.setItem("famjamAuthToken", token);
+    sessionStorage.setItem("famJamUserId", userId);
     dispatch({
       type: GOOGLE_SIGNUP_SUCCESS,
       payload: userId,
@@ -22,16 +23,16 @@ export const googleSignUp =
   
     setTimeout(() => {
       navigate("/dashboard");
-    }, 2500);
+    }, 3000);
   };
 export const googleSignIn =
   (response: googleSignUpType, navigate: any) => async (dispatch: any) => {
     toast.success("Successfully signed in !");
     const token = response.data.token;
     const userId = response.data.user._id;
-
-    localStorage.setItem("famjamAuthToken", token);
-    localStorage.setItem("famJamUserId", userId);
+    sessionStorage.setItem("famJamUserId",userId)
+    sessionStorage.setItem("famjamAuthToken", token);
+   
     dispatch({
       type: GOOGLE_SIGNUP_SUCCESS, 
       payload: userId,
@@ -40,7 +41,7 @@ export const googleSignIn =
 
     setTimeout(() => {
       navigate("/dashboard");
-    }, 2500);
+    }, 3000);
   };
 export const userSignUp =
   (response: signUpType, navigate: any) => async (dispatch: any) => {
@@ -52,8 +53,8 @@ export const userSignUp =
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
-        localStorage.setItem("famjamAuthToken", token);
-        localStorage.setItem("famJamUserId", userId);
+        sessionStorage.setItem("famjamAuthToken", token);
+        sessionStorage.setItem("famJamUserId", userId);
 
         toast.success("Successfully signed up !");
         dispatch({
@@ -76,8 +77,8 @@ export const userSignUp =
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
-        localStorage.setItem("famjamAuthToken", token);
-        localStorage.setItem("famJamUserId", userId);
+        sessionStorage.setItem("famjamAuthToken", token);
+        sessionStorage.setItem("famJamUserId", userId);
         toast.success("Successfully signed in !");
         dispatch({
           type: SIGNUP_SUCCESS,
@@ -106,3 +107,57 @@ export const userSignUp =
     })
     .catch(err=>console.log(err))
   }
+  export const userSignout=(navigate:any)=>async(dispatch:any)=>{
+    toast.success("Successfully signed out !");
+    sessionStorage.setItem("famjamAuthToken", "");
+    sessionStorage.setItem("famJamUserId", "");
+    navigate('/signIn')
+  }
+
+  export const getFamFriends=(userId:any)=>async(dispatch:any)=>{
+   
+    await axios.get(`http://localhost:7000/auth/getFamFriends/${userId}`)
+    .then(res=>{
+
+      dispatch({
+        type:GET_FAM_FRIENDS,
+        payload:res.data
+      })
+
+    })
+  }
+
+  export const getConversations=(userId:any,setConversations:any)=>async(dispatch:any)=>{
+
+      await axios.get(`http://localhost:7000/auth/getChatConversation/${userId}`)
+      .then(res=>{
+
+        setConversations(res.data)
+        dispatch({
+          type:GET_CONVERSATIONS,
+          payload:res.data
+        })
+      })
+  }
+
+  export const setCurrentConversation=(conversationId:string)=>async(dispatch:any)=>{
+    await axios.get(`http://localhost:7000/auth/getCreatedMessage/${conversationId}`)
+    .then(res=>{
+      
+      dispatch({
+        type:SET_CURRENT_CONVERSATIONS,
+        payload:res.data
+      })
+
+      
+    })
+      
+  }
+
+  export const getCurrentFriendMessage=(friend:famFriendsType)=>async(dispatch:any)=>{
+    dispatch({
+      type:CURRENT_FRIEND_MESSAGE,
+      payload:friend
+    })
+  }
+  

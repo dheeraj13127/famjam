@@ -9,7 +9,7 @@ function FeaturesSection() {
     <div className="featuresSectionContainer">
       
       <Grid>
-
+     
         <Grid.Row centered>
           <Grid.Column computer={6} textAlign="center" mobile={16} tablet={16}>
             <Header as="h1" className="featureSectionHeader">
@@ -17,13 +17,14 @@ function FeaturesSection() {
             </Header>
           </Grid.Column>
         </Grid.Row>
-        <ParticlesBg type="polygon" bg={true} />
+      <ParticlesBg type="polygon" bg={true}/>
         <Grid.Row stretched centered>
-
+     
             {featuresData.map((feat,key)=>(
                 <>
-                 <Grid.Column computer={4} mobile={16} tablet={8} textAlign="center">
+                 <Grid.Column key={key} computer={4} mobile={16} tablet={8} textAlign="center">
             <Card centered className="featuresSectionCard">
+           
               <img
                 src={feat.imgUrl}
                 alt="features"
