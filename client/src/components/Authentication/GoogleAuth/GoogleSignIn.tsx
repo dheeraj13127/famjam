@@ -22,18 +22,19 @@ function GoogleSignIn() {
         dispatch(googleSignIn(res, navigate));
       })
       .catch((err) => {
-        console.log(err)
+     
+        
         toast.error("Something went wrong !")});
   };
   const responseFailureGoogle = (resp: object) => {
     toast.error("Something went wrong !");
-    console.log(resp,"respFailurw")
+  
   };
   return (
     <div>
     
         <GoogleLogin
-    clientId="550449438201-3fbk3ajdsdp17gqm6gfiqmb3lvq5rnmm.apps.googleusercontent.com"
+    clientId="1034920183548-99fe7306jpak3rgseithc9ba4kksdeek.apps.googleusercontent.com"
     buttonText="SignIn with Google"
     onSuccess={responseSuccessGoogle}
     onFailure={responseFailureGoogle}
