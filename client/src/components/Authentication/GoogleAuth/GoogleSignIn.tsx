@@ -21,10 +21,13 @@ function GoogleSignIn() {
         
         dispatch(googleSignIn(res, navigate));
       })
-      .catch((err) => toast.error("Something went wrong !"));
+      .catch((err) => {
+        console.log(err)
+        toast.error("Something went wrong !")});
   };
   const responseFailureGoogle = (resp: object) => {
     toast.error("Something went wrong !");
+    console.log(resp,"respFailurw")
   };
   return (
     <div>
