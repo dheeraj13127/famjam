@@ -17,9 +17,9 @@ function FeaturesSection() {
             </Header>
           </Grid.Column>
         </Grid.Row>
-      <ParticlesBg type="polygon" bg={true}/>
+        
         <Grid.Row stretched centered>
-     
+       <ParticlesBg type="polygon" bg={true}/>
             {featuresData.map((feat,key)=>(
                 <>
                  <Grid.Column key={key} computer={4} mobile={16} tablet={8} textAlign="center">
