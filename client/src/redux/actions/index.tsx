@@ -116,7 +116,7 @@ export const userSignUp =
 
   export const getFamFriends=(userId:any)=>async(dispatch:any)=>{
    
-    await axios.get(`http://localhost:7000/auth/getFamFriends/${userId}`)
+    await axios.get(`https://famjams.herokuapp.com/auth/getFamFriends/${userId}`)
     .then(res=>{
 
       dispatch({
@@ -129,7 +129,7 @@ export const userSignUp =
 
   export const getConversations=(userId:any,setConversations:any)=>async(dispatch:any)=>{
 
-      await axios.get(`http://localhost:7000/auth/getChatConversation/${userId}`)
+      await axios.get(`https://famjams.herokuapp.com/auth/getChatConversation/${userId}`)
       .then(res=>{
 
         setConversations(res.data)
@@ -141,7 +141,7 @@ export const userSignUp =
   }
 
   export const setCurrentConversation=(conversationId:string)=>async(dispatch:any)=>{
-    await axios.get(`http://localhost:7000/auth/getCreatedMessage/${conversationId}`)
+    await axios.get(`https://famjams.herokuapp.com/auth/getCreatedMessage/${conversationId}`)
     .then(res=>{
       
       dispatch({
