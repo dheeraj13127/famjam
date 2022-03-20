@@ -45,7 +45,7 @@ function ChatComponent({ message, setMessage }: chatComponentType) {
             mobile={16}
             tablet={16}
           >
-            {message ? (
+            {message.length!==0 ? (
               <>
                 <NewMessageInput
                   message={message}
