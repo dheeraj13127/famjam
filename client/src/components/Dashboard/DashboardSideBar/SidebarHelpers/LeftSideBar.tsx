@@ -20,7 +20,7 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
   
   const [currentChatId,setCurrentChatId]=useState("")
   useEffect(()=>{
-    dispatch(setCurrentConversation(currentChatId,setMessage))
+    currentChatId!==""&&dispatch(setCurrentConversation(currentChatId,setMessage))
    },[currentChatId])
   const famFriendsData=useSelector<famReducerState,famReducerState["famFriendsData"]>(state=>state.famFriendsData)
   useEffect(()=>{
