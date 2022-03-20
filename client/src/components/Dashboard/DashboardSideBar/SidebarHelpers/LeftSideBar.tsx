@@ -11,25 +11,32 @@ import {
 } from "semantic-ui-react";
 import {useDispatch,useSelector} from 'react-redux'
 import { famFriendsType, leftSidebarType, userDataType } from "../../../../redux/actionTypes/types";
-import { getCurrentFriendMessage, getFamFriends, setCurrentConversation } from "../../../../redux/actions";
+import { getCurrentConversationId, getCurrentFriendMessage, getFamFriends, setCurrentConversation } from "../../../../redux/actions";
 import { famReducerState } from "../../../../redux/reducers";
-function LeftSideBar({visible,userData}: leftSidebarType) {
+import axios from "axios";
+function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSidebarType) {
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   const dispatch=useDispatch()
+  
+  const [currentChatId,setCurrentChatId]=useState("")
+  useEffect(()=>{
+    dispatch(setCurrentConversation(currentChatId,setMessage))
+   },[currentChatId])
   const famFriendsData=useSelector<famReducerState,famReducerState["famFriendsData"]>(state=>state.famFriendsData)
   useEffect(()=>{
     dispatch(getFamFriends(famJamUserId))
   },[])
-  const userConversations=useSelector<famReducerState,famReducerState["userConversations"]>(state=>state.userConversations)
+ 
 
   const setChattingScenario=(id:string,fr:famFriendsType)=>{
-    
-    userConversations.map((cn:any)=>{
+  console.log(conversations)
+    conversations.map((cn:any)=>{
       cn.members.map((cnm:any)=>{
         if(cnm===id){
-         
-          dispatch(setCurrentConversation(cn._id))
+         setCurrentChatId(cn._id)
+          // dispatch(setCurrentConversation(cn._id,setMessage))
           dispatch(getCurrentFriendMessage(fr))
+          dispatch(getCurrentConversationId(cn._id))
 
         }
       })

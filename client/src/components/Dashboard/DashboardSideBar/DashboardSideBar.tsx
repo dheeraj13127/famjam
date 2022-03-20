@@ -8,6 +8,7 @@ import { LeftSideBar,RightSideBar } from "..";
 function DashboardSideBar(props: any) {
   const [visible, setVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
+
   const toggleVisible = () => {
     setVisible(!visible);
   };
@@ -47,7 +48,7 @@ function DashboardSideBar(props: any) {
       </Menu>
       
       <Sidebar.Pushable className="mobile hidden tablet hidden dashboardSidebarBox">
-        <LeftSideBar visible={visible} userData={props.userData} />
+        <LeftSideBar conversations={props.conversations} visible={visible} userData={props.userData} message={props.message} setMessage={props.setMessage} />
         <RightSideBar userData={props.userData} rightVisible={rightVisible} />
         <Sidebar.Pusher>
               {props.children}
@@ -55,8 +56,8 @@ function DashboardSideBar(props: any) {
         </Sidebar.Pusher>
       </Sidebar.Pushable>
       <Sidebar.Pushable className="mobile only tablet only dashboardSidebarBox">
-        <LeftSideBar visible={!visible} userData={props.userData}/>
-        <RightSideBar userData={props.userData} rightVisible={!rightVisible} />
+        <LeftSideBar conversations={props.conversations} visible={!visible} userData={props.userData} message={props.message} setMessage={props.setMessage}/>
+        <RightSideBar userData={props.userData} rightVisible={!rightVisible}  />
         <Sidebar.Pusher>
           {props.children}
         </Sidebar.Pusher>

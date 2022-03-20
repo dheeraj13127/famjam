@@ -1,18 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { DashboardSideBar } from ".";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserProfile } from "../../redux/actions";
+import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
 import { ChatComponent } from "../GlobalExports";
+import { Footer } from "../Landing";
 
 
 function Dashboard() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [conversations,setConversations]=useState([])
+  const [message,setMessage]=useState([])
   const famjamAuthToken = sessionStorage.getItem("famjamAuthToken");
   let famJamUserId = sessionStorage.getItem("famJamUserId");
+  useEffect(()=>{
+    dispatch(getConversations (famJamUserId,setConversations ))
+  },[famJamUserId])
   let userProfile = {
     userId: famJamUserId,
   };
@@ -35,14 +41,14 @@ function Dashboard() {
 
   const setComponent = () => {
     if (location.pathname === "/dashboard") {
-      return <ChatComponent />;
+      return <ChatComponent message={message} setMessage={setMessage}/>;
     }
   };
 
   return (
     <div style={{ background: "black" }}>
-      <DashboardSideBar userData={userData}>{setComponent()}</DashboardSideBar>
-
+      <DashboardSideBar conversations={conversations} message={message} setMessage={setMessage} userData={userData}>{setComponent()}</DashboardSideBar>
+      {/* <Footer/> */}
       <Toaster position="top-center" reverseOrder={false} />
     </div>
   );

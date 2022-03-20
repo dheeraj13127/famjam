@@ -1,21 +1,15 @@
-import React, { useEffect, useState} from "react";
-import { Button, Grid, Icon, Input } from "semantic-ui-react";
-import { useDispatch,useSelector } from "react-redux";
-import { NoMessage, PrivateMessage } from ".";
-
+import React, { useEffect, useRef, useState } from "react";
+import { Grid } from "semantic-ui-react";
+import { NewMessageInput, NoMessage, PrivateMessage } from ".";
 import "../../styles/ChatComponentStyles/ChatComponent.scss";
-import { getConversations } from "../../redux/actions";
-import { famReducerState } from "../../redux/reducers";
+import { chatComponentType } from "../../redux/actionTypes/types";
 
-function ChatComponent() {
-  const dispatch=useDispatch()
+function ChatComponent({ message, setMessage }: chatComponentType) {
   let famJamUserId = sessionStorage.getItem("famJamUserId");
-  const [conversations,setConversations]=useState([])
-  useEffect(()=>{
-    dispatch(getConversations(famJamUserId,setConversations ))
-  },[])
-  const currentMessages=useSelector<famReducerState,famReducerState["currentMessages"]>(state=>state.currentMessages)
-  console.log(currentMessages)
+
+  const [newMessages, setNewMessages] = useState("");
+  const scrollRef = useRef<any>();
+
   return (
     <div className="chatComponentContainer">
       <Grid>
@@ -28,15 +22,20 @@ function ChatComponent() {
             tablet={16}
             className="chatColumn"
           >
-           {
-             currentMessages?(currentMessages.map((mes:any,key:any)=>(
-              <PrivateMessage key={key} message={mes} sender={mes.sender===famJamUserId}/>
-             ))):(
-               <NoMessage/>
-             )
-           }
-           
-            
+            {message.length !== 0 ? (
+              message.map((mes: any, key: any) => (
+               
+                  <PrivateMessage
+                    key={key}
+                    message={mes}
+                    sender={mes.sender === famJamUserId}
+                    scrollRef={scrollRef}
+                  />
+              
+              ))
+            ) : (
+              <NoMessage />
+            )}
           </Grid.Column>
           <Grid.Column
             className="chatTypeColumn"
@@ -46,29 +45,19 @@ function ChatComponent() {
             mobile={16}
             tablet={16}
           >
-            {
-              currentMessages?(
-                <>
-                 <Button icon primary className="chatEmojiButton">
-              <Icon name="smile outline" />
-            </Button>
-            <Input
-              className="chatComponentMessageType"
-              placeholder="Search..."
-            />
-            <Button icon primary className="chatSendButton" animated>
-              <Button.Content visible>Send</Button.Content>
-              <Button.Content hidden>
-                <Icon name="send" />
-              </Button.Content>
-            </Button>
-                </>
-              ):
-              (
-                <></>
-              )
-            }
-           
+            {message ? (
+              <>
+                <NewMessageInput
+                  message={message}
+                  setMessage={setMessage}
+                  famJamUserId={famJamUserId}
+                  newMessages={newMessages}
+                  setNewMessages={setNewMessages}
+                />
+              </>
+            ) : (
+              <></>
+            )}
           </Grid.Column>
         </Grid.Row>
       </Grid>

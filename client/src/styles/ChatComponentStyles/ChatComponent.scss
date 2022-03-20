@@ -9,11 +9,7 @@
     display: flex !important;
     justify-content: center !important;
 }
-.chatColumn{
-    // -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.59); 
-    // box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.59);
-  
-}
+
 body ::-webkit-scrollbar-track{
     background: none !important;
 }
@@ -21,7 +17,7 @@ body ::-webkit-scrollbar-track{
     display: flex !important;
     justify-content: center !important;
     position: fixed !important;
-    bottom: 70px !important;
+    bottom: 0px !important;
     margin-bottom: 30px !important;
 }
 .chatComponentMessageType{

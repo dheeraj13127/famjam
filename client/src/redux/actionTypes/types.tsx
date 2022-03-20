@@ -61,6 +61,9 @@ export type leftSidebarType = {
     firstSignUp: boolean;
     _id: string;
   };
+  message:any
+  setMessage:any
+  conversations:any
 };
 export type rightSidebarType = {
   userData: {
@@ -80,6 +83,11 @@ export type rightSidebarType = {
   rightVisible: boolean;
 };
 
+export type chatComponentType={
+  message:any,
+  setMessage:any
+}
+
 export type teamChannelListType = {
   children: React.ReactNode;
   error: boolean;
@@ -98,6 +106,7 @@ export type privateMessageType = {
     __v: number;
     _id: string;
   };
+  scrollRef:any
 };
 
 export type famFriendsType = {
@@ -114,3 +123,8 @@ export type famFriendsType = {
   firstSignUp: boolean;
   _id: string;
 };
+ export type createMessageType={
+  conversationId:string,
+  sender:string,
+  text:string
+ }
