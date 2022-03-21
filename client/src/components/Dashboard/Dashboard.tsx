@@ -6,7 +6,7 @@ import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
 import { ChatComponent } from "../GlobalExports";
-import { Footer } from "../Landing";
+
 
 
 function Dashboard() {
@@ -41,14 +41,14 @@ function Dashboard() {
 
   const setComponent = () => {
     if (location.pathname === "/dashboard") {
-      return <ChatComponent message={message} setMessage={setMessage}/>;
+      return <ChatComponent  message={message} setMessage={setMessage}/>;
     }
   };
 
   return (
     <div style={{ background: "black" }}>
-      <DashboardSideBar conversations={conversations} message={message} setMessage={setMessage} userData={userData}>{setComponent()}</DashboardSideBar>
-      {/* <Footer/> */}
+      <DashboardSideBar  conversations={conversations} message={message} setMessage={setMessage} userData={userData}>{setComponent()}</DashboardSideBar>
+      
       <Toaster position="top-center" reverseOrder={false} />
     </div>
   );

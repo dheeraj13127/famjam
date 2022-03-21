@@ -63,7 +63,8 @@ export type leftSidebarType = {
   };
   message:any
   setMessage:any
-  conversations:any
+  conversations:any,
+  
 };
 export type rightSidebarType = {
   userData: {
@@ -85,7 +86,8 @@ export type rightSidebarType = {
 
 export type chatComponentType={
   message:any,
-  setMessage:any
+  setMessage:any,
+
 }
 
 export type teamChannelListType = {
@@ -128,3 +130,16 @@ export type famFriendsType = {
   sender:string,
   text:string
  }
+ export type ServerToClientEvents= {
+  noArg: () => void;
+  basicEmit: (a: number, b: string, c: Buffer) => void;
+  withAck: (d: string, callback: (e: number) => void) => void;
+}
+
+export type ClientToServerEvents ={
+  hello: () => void;
+}
+export type arrivalMessageType={
+  senderId:string
+  text:string
+}

@@ -1,4 +1,4 @@
-import { CREATE_NEW_MESSAGE, CURRENT_FRIEND_MESSAGE, GET_CONVERSATIONS, GET_CURRENT_CONVERSATION_ID, GET_FAM_FRIENDS, GET_USER_PROFILE, GOOGLE_SIGNUP_SUCCESS, SET_CURRENT_CONVERSATIONS, SIGNUP_SUCCESS } from "../constants/constants";
+import { CREATE_NEW_MESSAGE, CURRENT_FRIEND_MESSAGE, GET_CONVERSATIONS, GET_CURRENT_CONVERSATION_ID, GET_FAM_FRIENDS, GET_INDIVIDUAL_CONVERSATION, GET_USER_PROFILE, GOOGLE_SIGNUP_SUCCESS, SET_CURRENT_CONVERSATIONS, SIGNUP_SUCCESS } from "../constants/constants";
 import toast from "react-hot-toast";
 import { createMessageType, famFriendsType, googleSignUpType, signInType, signUpType } from "../actionTypes/types";
 import axios from "axios";
@@ -171,6 +171,7 @@ export const userSignUp =
   export const createNewMessage=(newMessage:createMessageType,setMessage:any,message:any)=>async(dispatch:any)=>{
     await axios.post("https://famjams.herokuapp.com/auth/createMessage",newMessage)
     .then(res=>{
+     
       setMessage([...message,res.data])
       dispatch({
         type:CREATE_NEW_MESSAGE,
@@ -180,4 +181,11 @@ export const userSignUp =
       
     })
       
+  }
+  export const getIndividualConversation=(conversationData:any)=>async(dispatch:any)=>{
+    dispatch({
+      type:GET_INDIVIDUAL_CONVERSATION,
+      payload:conversationData
+    })
+
   }

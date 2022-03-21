@@ -6,23 +6,31 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const { OAuth2Client } = require("google-auth-library");
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID,process.env.GOOGLE_CLIENT_SECRET);
+const client = new OAuth2Client(
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET
+);
 
-exports.googleSignUp = async (req, res) => { 
+exports.googleSignUp = async (req, res) => {
   const { tokenId } = req.body;
   await client
     .verifyIdToken({
       idToken: tokenId,
-      requiredAudience:process.env.GOOGLE_CLIENT_ID
+      requiredAudience: process.env.GOOGLE_CLIENT_ID,
     })
-    .then((resp) => {  
-    
-      const { email_verified, name, email, given_name, family_name, iat,picture } =
-        resp.payload;
+    .then((resp) => {
+      const {
+        email_verified,
+        name,
+        email,
+        given_name,
+        family_name,
+        iat,
+        picture,
+      } = resp.payload;
       if (email_verified) {
         User.findOne({ email }).exec((err, user) => {
           if (err) {
-           
             return res.status(400).json({ message: "Something went wrong !" });
           } else {
             if (user) {
@@ -33,7 +41,7 @@ exports.googleSignUp = async (req, res) => {
               );
               const { _id, userName, email, firstName, lastName } = user;
               return res.status(400).json({
-                message:"Email address already exists"
+                message: "Email address already exists",
               });
             } else {
               let password = iat + email + process.env.JWT_SIGNIN_KEY;
@@ -43,8 +51,9 @@ exports.googleSignUp = async (req, res) => {
                 userName: given_name + family_name,
                 email,
                 password,
-                profilePicUrl:picture,
-                famies: 0,  
+                profilePicUrl:
+                  "https://imgs.search.brave.com/0EITIdJcbvNG-q0alVrRPR9t-DpgY0hvtFvcdNO34sg/rs:fit:452:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5P/bG54Tzc1M1ZSZ0hL/RExMRHpDS29BSGFI/dyZwaWQ9QXBp",
+                famies: 0,
                 famFriends: [],
                 famRequestsReceived: [],
                 famRequestsSent: [],
@@ -54,7 +63,7 @@ exports.googleSignUp = async (req, res) => {
                 if (err) {
                   return res
                     .status(400)
-                    .json({ message: "Something went wrong!",err});
+                    .json({ message: "Something went wrong!", err });
                 } else {
                   const token = jwt.sign(
                     { _id: data._id },
@@ -73,16 +82,15 @@ exports.googleSignUp = async (req, res) => {
             }
           }
         });
-      } 
+      }
     });
-}; 
+};
 exports.googleLogin = async (req, res) => {
-
   const { tokenId } = req.body;
   client
     .verifyIdToken({
       idToken: tokenId,
-      requiredAudience:process.env.GOOGLE_CLIENT_ID
+      requiredAudience: process.env.GOOGLE_CLIENT_ID,
     })
     .then((resp) => {
       const { email_verified, name, email, given_name, family_name, iat } =
@@ -90,7 +98,6 @@ exports.googleLogin = async (req, res) => {
       if (email_verified) {
         User.findOne({ email }).exec((err, user) => {
           if (err) {
-              
             return res.status(400).json({ message: "Email not registered!" });
           } else {
             if (user) {
@@ -104,9 +111,8 @@ exports.googleLogin = async (req, res) => {
                 token,
                 user: { _id, userName, email, firstName, lastName },
                 message: "welcome back !",
-              }); 
-            }
-            else{
+              });
+            } else {
               return res.status(400).json({ message: "Email not registered!" });
             }
           }
@@ -116,7 +122,6 @@ exports.googleLogin = async (req, res) => {
 };
 
 exports.signUpWithEmail = async (req, res) => {
-  
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -127,8 +132,7 @@ exports.signUpWithEmail = async (req, res) => {
       if (user) {
         return res.status(400).json({
           success: false,
-          message:
-            "Email address already exists",
+          message: "Email address already exists",
         });
       }
     });
@@ -147,7 +151,7 @@ exports.signUpWithEmail = async (req, res) => {
       message: "Success",
     });
   } catch (e) {
-    res.status(500).json({ success: false, message:"Something went wrong !" });
+    res.status(500).json({ success: false, message: "Something went wrong !" });
   }
 };
 
@@ -178,34 +182,29 @@ exports.signInWithEmail = async (req, res) => {
       .status(200)
       .json({ success: true, accessToken: token, message: "Welcome back !" });
   } catch (e) {
-    res.status(500).json({ success: false, message:"Something went wrong !" });
+    res.status(500).json({ success: false, message: "Something went wrong !" });
   }
-}; 
+};
 
-exports.getProfile=async(req,res)=>{
+exports.getProfile = async (req, res) => {
+  const { userId } = req.body;
 
-  const {userId}=req.body
-  
-  try{ 
-  
-    await User.findById({_id:userId})
-    .then(resp=>  res.status(200).json({user:resp}))
-  
+  try {
+    await User.findById({ _id: userId }).then((resp) =>
+      res.status(200).json({ user: resp })
+    );
+  } catch (e) {
+    res.status(500).json({ success: false, message: "Something went wrong !" });
   }
-  catch(e){
-    res.status(500).json({ success: false, message:"Something went wrong !" });
-  }
-}   
+};
 
-exports.getFamFriends=async(req,res)=>{
-
-  try{
-    const friends=await User.find({
-      famFriends:{$in:[req.params.userId]}
-  })
-  res.status(200).json(friends)
+exports.getFamFriends = async (req, res) => {
+  try {
+    const friends = await User.find({
+      famFriends: { $in: [req.params.userId] },
+    });
+    res.status(200).json(friends);
+  } catch (e) {
+    res.status(500).json({ success: false, message: "Something went wrong !" });
   }
-  catch(e){
-    res.status(500).json({ success: false, message:"Something went wrong !" });
-  }
-}
+};

@@ -14,6 +14,7 @@ import fortuneWheel from "../../../../assets/other/fortuneWheel.png";
 import { motion } from "framer-motion";
 import { rightSidebarType } from "../../../../redux/actionTypes/types";
 import { userSignout } from "../../../../redux/actions";
+import randomUser from '../../../../assets/other/randomUser.png'
 function RightSideBar(props: rightSidebarType) {
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -39,7 +40,7 @@ function RightSideBar(props: rightSidebarType) {
             <Menu.Item link className="dashboardSidebarMenuItem">
               <Image
                 centered
-                src={props.userData && props.userData.profilePicUrl}
+                src={props.userData.profilePicUrl!==""?props.userData.profilePicUrl:randomUser}
                 circular
                 size="mini"
               />

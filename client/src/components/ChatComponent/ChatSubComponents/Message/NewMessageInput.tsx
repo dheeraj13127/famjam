@@ -9,16 +9,20 @@ type newMessageType={
     setNewMessages:any,
     famJamUserId:any,
     setMessage:any,
-    message:any
+    message:any,
+    socket:any,
+    
 }
 
-function NewMessageInput({newMessages,setNewMessages,famJamUserId,setMessage,message}:newMessageType) {
-    
+function NewMessageInput({newMessages,setNewMessages,famJamUserId,setMessage,message,socket}:newMessageType) {
+
     const conversationId=useSelector<famReducerState,famReducerState["currentConversationId"]>(state=>state.currentConversationId)
+    const friend=useSelector<famReducerState,famReducerState["friend"]>(state=>state.friend)
     const onNewMessageChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
         setNewMessages(e.target.value)
     }
     const dispatch=useDispatch()
+    
     const newMessageSubmit=(e:React.FormEvent<HTMLButtonElement>)=>{
         e.preventDefault()
         const newMessage={
@@ -27,6 +31,12 @@ function NewMessageInput({newMessages,setNewMessages,famJamUserId,setMessage,mes
             text:newMessages
         }
         dispatch(createNewMessage(newMessage,setMessage,message))
+        socket.current.emit("sendMessage",{
+          senderId:famJamUserId,
+          receiverId:friend._id,
+          text:newMessage
+        })
+        
         setNewMessages("")
         
     }

@@ -48,7 +48,7 @@ function DashboardSideBar(props: any) {
       </Menu>
       
       <Sidebar.Pushable className="mobile hidden tablet hidden dashboardSidebarBox">
-        <LeftSideBar conversations={props.conversations} visible={visible} userData={props.userData} message={props.message} setMessage={props.setMessage} />
+        <LeftSideBar  conversations={props.conversations} visible={visible} userData={props.userData} message={props.message} setMessage={props.setMessage} />
         <RightSideBar userData={props.userData} rightVisible={rightVisible} />
         <Sidebar.Pusher>
               {props.children}
@@ -56,7 +56,7 @@ function DashboardSideBar(props: any) {
         </Sidebar.Pusher>
       </Sidebar.Pushable>
       <Sidebar.Pushable className="mobile only tablet only dashboardSidebarBox">
-        <LeftSideBar conversations={props.conversations} visible={!visible} userData={props.userData} message={props.message} setMessage={props.setMessage}/>
+        <LeftSideBar  conversations={props.conversations} visible={!visible} userData={props.userData} message={props.message} setMessage={props.setMessage}/>
         <RightSideBar userData={props.userData} rightVisible={!rightVisible}  />
         <Sidebar.Pusher>
           {props.children}

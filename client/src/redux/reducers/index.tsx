@@ -1,6 +1,6 @@
 import { actionType } from '../actions'
 import { famFriendsType } from '../actionTypes/types'
-import { GOOGLE_SIGNUP_SUCCESS,GOOGLE_SIGNIN_SUCCESS,SIGNUP_SUCCESS,SIGNIN_SUCCESS, GET_USER_PROFILE, GET_FAM_FRIENDS, GET_CONVERSATIONS, SET_CURRENT_CONVERSATIONS, CURRENT_FRIEND_MESSAGE, GET_CURRENT_CONVERSATION_ID } from '../constants/constants'
+import { GOOGLE_SIGNUP_SUCCESS,GOOGLE_SIGNIN_SUCCESS,SIGNUP_SUCCESS,SIGNIN_SUCCESS, GET_USER_PROFILE, GET_FAM_FRIENDS, GET_CONVERSATIONS, SET_CURRENT_CONVERSATIONS, CURRENT_FRIEND_MESSAGE, GET_CURRENT_CONVERSATION_ID, GET_INDIVIDUAL_CONVERSATION } from '../constants/constants'
 export interface famReducerState{
     googleSignUpId:string,
     googleSignInId:string,
@@ -12,6 +12,7 @@ export interface famReducerState{
     currentMessages:any,
     friend:any,
     currentConversationId:string
+    conversationData:any
 }
 
 const initState={
@@ -25,7 +26,8 @@ const initState={
     conversationId:"",
     currentMessages:null,
     friend:null,
-    currentConversationId:""
+    currentConversationId:"",
+    conversationData:null
 }
 
 export const famReducer=(state:famReducerState=initState,action:actionType)=>{
@@ -87,6 +89,12 @@ export const famReducer=(state:famReducerState=initState,action:actionType)=>{
         case GET_CURRENT_CONVERSATION_ID:{
             return Object.assign({},state,{
                 currentConversationId:action.payload,
+          
+              })
+        }
+        case GET_INDIVIDUAL_CONVERSATION:{
+            return Object.assign({},state,{
+                conversationData:action.payload,
           
               })
         }
