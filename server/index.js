@@ -9,7 +9,7 @@ app.use(cors())
 const authRoutes=require('./routes/auth')
 const user = require('./models/user')
 
-const io=require("socket.io")(app,{
+const io=require("socket.io")(process.env.PORT,{
   cors:{
     origin:"https://fam-jam.netlify.app"
   }
