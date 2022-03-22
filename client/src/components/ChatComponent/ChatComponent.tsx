@@ -58,6 +58,7 @@ function ChatComponent({ message, setMessage }: chatComponentType) {
             tablet={16}
             className="chatColumn"
           >
+     
             {message.length !== 0 ? (
               message.map((mes: any, key: any) => (
                
@@ -81,6 +82,7 @@ function ChatComponent({ message, setMessage }: chatComponentType) {
             mobile={16}
             tablet={16}
           >
+
             {message.length!==0 ? (
               <>
                 <NewMessageInput

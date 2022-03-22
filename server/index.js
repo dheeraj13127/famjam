@@ -8,14 +8,19 @@ const path=require('path')
 app.use(cors())
 const authRoutes=require('./routes/auth')
 const user = require('./models/user')
-
-const io=require("socket.io")(process.env.PORT,{
+const server =require('http').createServer(app);
+const io = require('socket.io')(server,{
   cors:{
-    origin:"https://fam-jam.netlify.app"
+    origin:"*"
   }
-})
-// const server = http.createServer(app);
-// const io = require('socket.io')(server);
+});
+// const io=require("socket.io")(process.env.PORT,{
+//   cors:{
+//     origin:"https://fam-jam.netlify.app"
+//   }
+// })
+
+
 mongoose.connect(process.env.DATABASE,{
   useNewUrlParser:true,
  
@@ -66,4 +71,4 @@ io.on("connection",(socket)=>{
 app.use('/auth',authRoutes)
 const PORT=process.env.PORT||7000
 
-app.listen(PORT,()=>console.log(`Server started on port ${PORT}`))
+server.listen(PORT,()=>console.log(`Server started on port ${PORT}`))

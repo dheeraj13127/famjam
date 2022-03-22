@@ -10,6 +10,7 @@ import {
  
 } from "semantic-ui-react";
 import {useDispatch,useSelector} from 'react-redux'
+
 import { famFriendsType, leftSidebarType, userDataType } from "../../../../redux/actionTypes/types";
 import { getCurrentConversationId, getCurrentFriendMessage, getFamFriends, getIndividualConversation, setCurrentConversation } from "../../../../redux/actions";
 import { famReducerState } from "../../../../redux/reducers";
@@ -17,7 +18,7 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
   
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   const dispatch=useDispatch()
-  
+  const [backActive,setBackActive]=useState(false)
   const [currentChatId,setCurrentChatId]=useState("")
   useEffect(()=>{
     currentChatId!==""&&dispatch(setCurrentConversation(currentChatId,setMessage))
@@ -37,11 +38,13 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
           dispatch(getIndividualConversation(cn))
           dispatch(getCurrentFriendMessage(fr))
           dispatch(getCurrentConversationId(cn._id))
-
+          setBackActive(!backActive)
         }
       })
     })
+    
   }
+
   return (
     <>
       <Sidebar
@@ -61,7 +64,7 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
             <Menu.Item link className="dashboardSidebarMenuItem">
           <Input placeholder="Search" />
         </Menu.Item>
-        <Menu.Item link className="dashboardSidebarMenuItem">
+        <Menu.Item link className="dashboardSidebarMenuItem dashboardSidebarFriendMenuItem">
           <Button color="blue" fluid>
             Channels
           </Button>
@@ -83,7 +86,7 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
         </Menu.Item>
         <Divider inverted />
         <Divider inverted />
-        <Menu.Item link className="dashboardSidebarMenuItem">
+        <Menu.Item link className="dashboardSidebarMenuItem dashboardSidebarFriendMenuItem">
           <Button color="blue" fluid>
             Private
           </Button>
@@ -95,8 +98,8 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
         <Divider inverted />
         {
           famFriendsData&&famFriendsData.map((fr:famFriendsType,key:any)=>(
-            <Menu.Item key={key} link>
-            <Button color="grey" basic fluid className="friendBtn" onClick={()=>setChattingScenario(fr._id,fr)}>
+            <Menu.Item key={key} link className="">
+            <Button color="grey" basic fluid className="friendBtn" toggle onClick={()=>setChattingScenario(fr._id,fr)}>
               <Image
                 src={fr.profilePicUrl}
                 circular
@@ -108,6 +111,7 @@ function LeftSideBar({visible,userData,message,setMessage,conversations}: leftSi
           </Menu.Item>
           ))
         }
+       
             </>
           ):(
                 <></>

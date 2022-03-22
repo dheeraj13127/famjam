@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation,Route,Routes } from "react-router-dom";
 import { DashboardSideBar } from ".";
 import { useDispatch, useSelector } from "react-redux";
 import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
-import { ChatComponent } from "../GlobalExports";
+import { AddFamFriend, ChatComponent } from "../GlobalExports";
 
 
 
@@ -43,11 +43,19 @@ function Dashboard() {
     if (location.pathname === "/dashboard") {
       return <ChatComponent  message={message} setMessage={setMessage}/>;
     }
+    else if(location.pathname==="/dashboard/addFamFriend"){
+      return <AddFamFriend/>
+    }
   };
 
   return (
     <div style={{ background: "black" }}>
-      <DashboardSideBar  conversations={conversations} message={message} setMessage={setMessage} userData={userData}>{setComponent()}</DashboardSideBar>
+      <DashboardSideBar  conversations={conversations} message={message} setMessage={setMessage} userData={userData}>
+        <Routes>
+          <Route path="/" element={<ChatComponent  message={message} setMessage={setMessage} />}/>
+          <Route path="/addFamFriend" element={<AddFamFriend/>}/>
+        </Routes>
+      </DashboardSideBar>
       
       <Toaster position="top-center" reverseOrder={false} />
     </div>

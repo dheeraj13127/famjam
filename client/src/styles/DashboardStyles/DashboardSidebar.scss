@@ -65,6 +65,12 @@
 .friendName{
   color: #ffffff !important;
 }
+.leftSidebarFriend{
+  background-color: rgb(58, 58, 58) !important;
+}
+.dashboardSidebarFriendMenuItem:hover{
+  background: none !important;
+}
 @media only screen and (max-width: 1700px) {
   .dashboardSidebarLeftMenu{
     width: 200px !important;

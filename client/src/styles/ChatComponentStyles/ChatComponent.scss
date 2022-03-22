@@ -15,7 +15,7 @@ body ::-webkit-scrollbar-track{
 }
 .chatTypeColumn{
     display: flex !important;
-    justify-content: center !important;
+   justify-content: space-between !important;
     position: fixed !important;
     bottom: 10px !important;
    
@@ -24,6 +24,22 @@ body ::-webkit-scrollbar-track{
     width: 100% !important;
 }
 .chatSendButton{
-    margin-left: 3px !important;
+    margin-left: 8px !important;
+    background-color: transparent !important;
 }
+.chatSendIcon{
+    color: white !important;
+}
+.react-emoji-picker--wrapper{
+    left: 0 !important;
+    position: absolute;
+    bottom: 0;
+    height: 357px;
+    width: 338px;
+    overflow: hidden;
+    z-index: 10;
 
+}
+.react-emoji{
+    flex-direction: row-reverse !important;
+}
