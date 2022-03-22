@@ -39,14 +39,7 @@ function Dashboard() {
     }
   }, []);
 
-  const setComponent = () => {
-    if (location.pathname === "/dashboard") {
-      return <ChatComponent  message={message} setMessage={setMessage}/>;
-    }
-    else if(location.pathname==="/dashboard/addFamFriend"){
-      return <AddFamFriend/>
-    }
-  };
+  
 
   return (
     <div style={{ background: "black" }}>
