@@ -74,13 +74,17 @@ function RightSideBar(props: rightSidebarType) {
               </Button>
             </Menu.Item>
             <Menu.Item link className="dashboardSidebarMenuItem">
+              
               <Button as="div" labelPosition="right" >
-                <Button color="blue">Fam requests</Button>
+                <a className="ui button primary" color="blue" href="/dashboard/famFriendRequest" >Fam requests</a>
                 <Label as="a" basic color="blue" pointing="left">
                   {props.userData.famRequestsReceived.length}
                 </Label>
               </Button>
+             
+              
             </Menu.Item>
+           
             <Menu.Item link className="dashboardSidebarMenuItem">
               <Button as="div" labelPosition="right" >
                 <Button color="blue">

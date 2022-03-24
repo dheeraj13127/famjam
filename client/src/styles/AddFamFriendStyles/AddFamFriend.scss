@@ -1,0 +1,67 @@
+.addFamFriendContainer{
+    padding: 10px 30px !important;
+    max-height: 80vh !important;
+   overflow-y: auto;
+  
+
+}
+.userShareProfileBox{
+    border: 1px solid white !important;
+    
+    padding: 15px !important;
+    margin-top: 50px !important;
+}
+.userShareProfileHeader{
+    color: white !important;
+    font-family: 'Poppins',sans-serif !important;
+}
+.userShareProfileId{
+    display: flex !important;
+    justify-content: center !important;
+}
+.userShareProfileWhatsappId{
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 15px !important;
+   
+}
+.IdShareHeader{
+    font-weight: 500 !important;
+}
+.addFamFriendDivider{
+    color: white !important;
+    text-transform: lowercase !important;
+    margin-top: 30px !important;
+}
+.addFamFriendInputButton{
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 25px !important;
+}
+.addFamFriendInputBarBox{
+    margin-top: 25px !important;
+}
+
+.addFamFriendPageHeader{
+    color: black !important;
+    border: 1px solid white !important;
+    background-color: white !important;
+    
+    
+}
+.addFamFriendPageHeaderBox{
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 50px !important;
+   margin-top: -25px !important;
+
+}
+@media only screen and (max-width: 600px) {
+    .addFamFriendContainer{
+     padding: 10px 25px !important;
+    
+  }
+  .userShareProfileHeader{
+      font-size: 15px !important;
+  }
+}

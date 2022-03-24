@@ -11,7 +11,7 @@ function NoMessage() {
           userData?(
             <div className="noMessageContainer">
             <Image centered circular src={userData&&userData.profilePicUrl} size="small"/>
-            <Header as="h2" textAlign="center" className='noMessageHeader'>Welcome back {userData.firstName} ❤️</Header>
+            <Header as="h2" textAlign="center" className='noMessageHeader'>Welcome to FamJam {userData.firstName} ❤️</Header>
             <div className="noMessageButtonContainer">
             <Button primary>To start the converation click on any of your fam-friends 🤝</Button>
             </div>

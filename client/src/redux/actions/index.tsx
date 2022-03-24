@@ -1,6 +1,6 @@
 import { CREATE_NEW_MESSAGE, CURRENT_FRIEND_MESSAGE, GET_CONVERSATIONS, GET_CURRENT_CONVERSATION_ID, GET_FAM_FRIENDS, GET_INDIVIDUAL_CONVERSATION, GET_USER_PROFILE, GOOGLE_SIGNUP_SUCCESS, SET_CURRENT_CONVERSATIONS, SIGNUP_SUCCESS } from "../constants/constants";
 import toast from "react-hot-toast";
-import { createMessageType, famFriendsType, googleSignUpType, signInType, signUpType } from "../actionTypes/types";
+import { createMessageType, famFriendsType, friendIdType, googleSignUpType, OwnUserDataType, signInType, signUpType, userDataType } from "../actionTypes/types";
 import axios from "axios";
 
 export type actionType = {
@@ -189,3 +189,50 @@ export const userSignUp =
     })
 
   }
+
+  export const sendFamFriendRequest=(friendId:string,userData:OwnUserDataType)=>async(dispatch:any)=>{
+    let exists=true
+    const data={
+      friendId:friendId,
+      newUserData:{
+        _id:userData._id,
+        userName:userData.userName,
+        profilePic:userData.profilePicUrl
+      }
+    }
+    // console.log(checkFriendPresent(friendId))
+    await axios.get(`https://famjams.herokuapp.com/auth/getFriendProfile/${friendId}`)
+    .then(async(res)=>{
+      console.log(res)
+      res.data.user.famRequestsReceived.length!==0&&res.data.user.famRequestsReceived.map((m:any)=>{
+        if(m._id===userData._id){
+          exists=false
+        }
+      })
+
+      if(exists){
+        await axios.post("https://famjams.herokuapp.com/auth/updateFriendRequest",data)
+        .then(resp=>{
+         toast("Request sent",{
+           icon:"👍"
+         })
+          
+        })
+        .catch(err=>{})
+      }
+      else{
+        toast("Request already sent!",{
+          icon:"😕"
+        })
+      }
+  
+    })
+    .catch(err=>{
+       toast("User not found !",{
+         icon:"😕"
+       })
+    })
+
+
+  }
+

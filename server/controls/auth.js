@@ -182,7 +182,7 @@ exports.signInWithEmail = async (req, res) => {
       .status(200)
       .json({ success: true, accessToken: token, message: "Welcome back !" });
   } catch (e) {
-    res.status(500).json({ success: false, message: "Something went wrong !" });
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
   }
 };
 
@@ -208,3 +208,37 @@ exports.getFamFriends = async (req, res) => {
     res.status(500).json({ success: false, message: "Something went wrong !" });
   }
 };
+exports.getFriendProfile = async (req, res) => {
+ 
+
+  try {
+    await User.findById({ _id: req.params.friendId }).then((resp) =>
+      res.status(200).json({ user: resp })
+    );
+  } catch (e) {
+    res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
+};
+
+exports.updateFriendRequests=async(req,res)=>{
+ 
+  try{
+    await User.findOneAndUpdate({_id:req.body.friendId},{
+      $push:{
+        famRequestsReceived:req.body.newUserData
+      }
+    },{upsert:true,returnDocument:true},(err,result)=>{
+      if(err){
+        return res.status(400).json(err)
+      
+      }
+      else{
+       return res.status(200).json(result)
+      }
+    })
+    
+  }
+  catch(e){
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
+}

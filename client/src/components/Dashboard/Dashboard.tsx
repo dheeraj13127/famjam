@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation,Route,Routes } from "react-router-dom";
+import { useNavigate,Route,Routes } from "react-router-dom";
 import { DashboardSideBar } from ".";
 import { useDispatch, useSelector } from "react-redux";
 import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
-import { AddFamFriend, ChatComponent } from "../GlobalExports";
+import { AddFamFriend, ChatComponent, FamFriendRequest } from "../GlobalExports";
 
 
 
 function Dashboard() {
   const dispatch = useDispatch();
-  const location = useLocation();
+  
   const [conversations,setConversations]=useState([])
   const [message,setMessage]=useState([])
   const famjamAuthToken = sessionStorage.getItem("famjamAuthToken");
@@ -47,6 +47,7 @@ function Dashboard() {
         <Routes>
           <Route path="/" element={<ChatComponent  message={message} setMessage={setMessage} />}/>
           <Route path="/addFamFriend" element={<AddFamFriend/>}/>
+          <Route path="/famFriendRequest" element={<FamFriendRequest/>}/>
         </Routes>
       </DashboardSideBar>
       

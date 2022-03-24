@@ -44,6 +44,22 @@ export type userDataType = {
     _id: string;
   };
 };
+export type OwnUserDataType = {
+ 
+    firstName: string;
+    lastName: string;
+    userName: string;
+    email: string;
+    password: string;
+    profilePicUrl: string;
+    famies: number;
+    famFriends: string[];
+    famRequestsReceived: string[];
+    famRequestsSent: string[];
+    firstSignUp: boolean;
+    _id: string;
+  
+};
 
 export type leftSidebarType = {
   visible: boolean;
@@ -142,4 +158,7 @@ export type ClientToServerEvents ={
 export type arrivalMessageType={
   senderId:string
   text:string
+}
+export type friendIdType={
+  friendId:string
 }
