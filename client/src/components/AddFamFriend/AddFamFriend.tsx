@@ -11,7 +11,7 @@ import {
   Input,
   Label,
   Loader,
-  Message,
+  
 } from "semantic-ui-react";
 import { famReducerState } from "../../redux/reducers";
 import "../../styles/AddFamFriendStyles/AddFamFriend.scss";
@@ -68,12 +68,7 @@ function AddFamFriend() {
                   size="small"
                   src={userData && userData.profilePicUrl}
                 />
-                 <Message color="violet" className="FamJamThoughts">
-                    <Message.Header>FamJam Thoughts</Message.Header>
-                    <p>
-                    “Other things may change us, but we start and end with the family.” 
-                    </p>
-                  </Message>
+                
                 <Header
                   textAlign="center"
                 

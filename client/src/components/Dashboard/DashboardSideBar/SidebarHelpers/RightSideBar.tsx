@@ -77,7 +77,7 @@ function RightSideBar(props: rightSidebarType) {
               
               <Button as="div" labelPosition="right" >
                 <a className="ui button primary" color="blue" href="/dashboard/famFriendRequest" >Fam requests</a>
-                <Label as="a" basic color="blue" pointing="left">
+                <Label as="a" basic color={props.userData.famRequestsReceived.length===0?"blue":"red"} pointing="left">
                   {props.userData.famRequestsReceived.length}
                 </Label>
               </Button>

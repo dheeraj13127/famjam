@@ -201,7 +201,7 @@ exports.getProfile = async (req, res) => {
 exports.getFamFriends = async (req, res) => {
   try {
     const friends = await User.find({
-      famFriends: { $in: [req.params.userId] },
+      famFriends: { _id: req.params.userId },
     });
     res.status(200).json(friends);
   } catch (e) {
@@ -241,4 +241,61 @@ exports.updateFriendRequests=async(req,res)=>{
   catch(e){
     // res.status(500).json({ success: false, message: "Something went wrong !" });
   }
+}
+
+
+exports.deleteFamFriendRequest=async(req,res)=>{
+  try{
+      await User.findOneAndUpdate({_id:req.body.userId},{
+        $pull:{
+          famRequestsReceived:{_id:req.body.friendId}
+        }
+      },(err,result)=>{
+        if(err){
+          return res.status(400).json(err)
+        }
+        else{
+          return res.status(200).json(result)
+        }
+          
+      })
+  }
+  catch(e){
+
+  }
+}
+
+exports.acceptFamFriendRequest=async(req,res)=>{
+  try{
+    await User.findOneAndUpdate({_id:req.body.userId},{
+      $push:{
+        famFriends:{$in:[req.body.friendId]}
+      }
+    },{upsert:true,returnDocument:true},async(err,result)=>{
+      if(err){
+        // return res.status(400).json(err)
+      }
+      else{
+        // return res.status(200).json(result)
+        await User.findOneAndUpdate({_id:req.body.friendId},{
+          $push:{
+            famFriends:{$in:[req.body.userId]}
+          }
+        },{upsert:true,returnDocument:true},(err,result)=>{
+          if(err){
+            return res.status(400).json(err)
+          }
+          else{
+            return res.status(200).json(result)
+          }
+            
+        })
+      }
+        
+    })
+    
+}
+catch(e){
+
+}
 }

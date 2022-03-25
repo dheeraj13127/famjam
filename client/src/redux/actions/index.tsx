@@ -236,3 +236,42 @@ export const userSignUp =
 
   }
 
+export const deleteFamFriendRequest=(userId:string,friendId:string)=>async(dispatch:any)=>{
+  const data={
+    userId:userId,
+    friendId:friendId
+  }
+
+  await axios.post("https://famjams.herokuapp.com/auth/deleteFamFriendRequest",data)
+  .then(res=>{
+    
+    toast("Rejected",{
+      icon:"❌"
+    })
+    setTimeout(()=>{
+      window.location.reload()
+    },1500)
+  })
+  .catch(err=>{
+    toast.error("Something went wrong !")
+  })
+}
+export const acceptFamFriendRequest=(userId:string,friendId:string)=>async(dispatch:any)=>{
+  const data={
+    userId:userId,
+    friendId:friendId
+  }
+  
+  await axios.post("https://famjams.herokuapp.com/auth/acceptFamFriendRequest",data)
+  .then(res=>{
+    toast("Accepted",{
+      icon:"✅"
+    })
+    setTimeout(()=>{
+      window.location.reload()
+    },1500)
+  })
+  .catch(err=>{
+    toast.error("Something went wrong !")
+  })
+}
