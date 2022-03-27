@@ -7,7 +7,7 @@ import {io} from 'socket.io-client'
 import { useSelector } from "react-redux";
 import { famReducerState } from "../../redux/reducers";
 
-function ChatComponent({ message, setMessage }: chatComponentType) {
+function ChatComponent({ message, setMessage,activateMessage }: chatComponentType) {
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   const [arrivalMessage,setArrivalMessage]=useState<any>(null)
 
@@ -24,7 +24,7 @@ function ChatComponent({ message, setMessage }: chatComponentType) {
         sender:data.senderId,
         text:data.text.text,
         createdAt:Date.now()
-      })
+      }) 
     }) 
   },[])
 
@@ -59,7 +59,7 @@ function ChatComponent({ message, setMessage }: chatComponentType) {
             className="chatColumn"
           >
      
-            {message.length !== 0 ? (
+            {message.length !== 0&&activateMessage ? (
               message.map((mes: any, key: any) => (
                
                   <PrivateMessage
@@ -83,7 +83,7 @@ function ChatComponent({ message, setMessage }: chatComponentType) {
             tablet={16}
           >
 
-            {message.length!==0 ? (
+            {activateMessage? (
               <>
                 <NewMessageInput
                   message={message}

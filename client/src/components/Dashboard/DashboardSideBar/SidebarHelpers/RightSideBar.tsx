@@ -49,9 +49,9 @@ function RightSideBar(props: rightSidebarType) {
               </p>
             </Menu.Item>
             <Menu.Item link className="dashboardSidebarMenuItem">
-              <Button color="grey" fluid>
+              <a href="/editProfile"><Button color="grey" fluid>
                 <Icon name="edit" /> Edit
-              </Button>
+              </Button></a>
             </Menu.Item>
             <Divider inverted />
             <Menu.Item link className="dashboardSidebarMenuItem">
@@ -85,7 +85,8 @@ function RightSideBar(props: rightSidebarType) {
               
             </Menu.Item>
            
-            <Menu.Item link className="dashboardSidebarMenuItem">
+            <Menu.Item link  className="dashboardSidebarMenuItem">
+
               <Button as="div" labelPosition="right" >
                 <Button color="blue">
                   <motion.div
@@ -105,7 +106,7 @@ function RightSideBar(props: rightSidebarType) {
                     ></motion.img>
                   </motion.div>
                 </Button>
-                <Label as="a" basic color="blue" pointing="left">
+                <Label as="a" href="/dashboard/spinAndWin"  basic color="blue" pointing="left">
                   Spin & Win
                 </Label>
               </Button>

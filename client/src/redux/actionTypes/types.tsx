@@ -80,6 +80,7 @@ export type leftSidebarType = {
   message:any
   setMessage:any
   conversations:any,
+  setActivateMessage:any
   
 };
 export type rightSidebarType = {
@@ -103,6 +104,9 @@ export type rightSidebarType = {
 export type chatComponentType={
   message:any,
   setMessage:any,
+  activateMessage:boolean,
+  setActivateMessage:any
+
 
 }
 

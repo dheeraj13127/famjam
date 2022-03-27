@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import { AddFamFriend, Dashboard, Landing, SignIn, SignUp } from "./components/GlobalExports";
+import {Dashboard, EditProfile, Landing, SignIn, SignUp } from "./components/GlobalExports";
 
 import "./App.scss";
 
@@ -15,7 +15,7 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/dashboard/*" element={<Dashboard/>}/>
-
+        <Route path="/editProfile" element={<EditProfile/>}/>
       
       </Routes>
     </Router>

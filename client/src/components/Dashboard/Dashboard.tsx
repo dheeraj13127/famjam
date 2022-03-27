@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
-import { AddFamFriend, ChatComponent, FamFriendRequest } from "../GlobalExports";
+import { AddFamFriend, ChatComponent, FamFriendRequest, SpinAndWin } from "../GlobalExports";
 
 
 
@@ -14,6 +14,7 @@ function Dashboard() {
   
   const [conversations,setConversations]=useState([])
   const [message,setMessage]=useState([])
+  const [activateMessage,setActivateMessage]=useState(false)
   const famjamAuthToken = sessionStorage.getItem("famjamAuthToken");
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   useEffect(()=>{
@@ -43,11 +44,12 @@ function Dashboard() {
 
   return (
     <div style={{ background: "black" }}>
-      <DashboardSideBar  conversations={conversations} message={message} setMessage={setMessage} userData={userData}>
+      <DashboardSideBar setActivateMessage={setActivateMessage}   conversations={conversations} message={message} setMessage={setMessage} userData={userData}>
         <Routes>
-          <Route path="/" element={<ChatComponent  message={message} setMessage={setMessage} />}/>
+          <Route path="/" element={<ChatComponent activateMessage={activateMessage} setActivateMessage={setActivateMessage}  message={message} setMessage={setMessage} />}/>
           <Route path="/addFamFriend" element={<AddFamFriend/>}/>
           <Route path="/famFriendRequest" element={<FamFriendRequest/>}/>
+          <Route path="/spinAndWin" element={<SpinAndWin/>}/>
         </Routes>
       </DashboardSideBar>
       

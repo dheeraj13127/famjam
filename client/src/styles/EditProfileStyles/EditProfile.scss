@@ -1,0 +1,38 @@
+.editProfileContainer{
+    padding: 10px 30px !important;
+   
+  
+
+}
+.editProfileColumn{
+    border:1px solid white;
+   border-radius: 8px !important;
+   padding: 35px 15px !important;
+   margin-top: 150px !important;
+}
+.avatarContainer{
+    margin-top: 15px !important;
+}
+.editProfileSelectAvatarbtn{
+    margin-top: 20px !important;
+}
+.avatarRow{
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important; 
+    box-shadow: 0px 0px 23px -7px rgba(71,71,71,0.69) !important;
+}
+.editProfileUserName::placeholder{
+    color: black !important;
+    font-weight: bold;
+}
+.userNameEditBtn{
+    margin-left: 10px !important;
+}
+.editProfileSubmitBtn{
+    margin-top: 50px !important;
+}
+@media only screen and (max-width: 600px) {
+
+    .editProfileColumn{
+        margin-top: 80px !important;
+    }
+}

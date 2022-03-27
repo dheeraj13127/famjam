@@ -266,27 +266,40 @@ exports.deleteFamFriendRequest=async(req,res)=>{
 }
 
 exports.acceptFamFriendRequest=async(req,res)=>{
+
   try{
     await User.findOneAndUpdate({_id:req.body.userId},{
       $push:{
-        famFriends:{$in:[req.body.friendId]}
+        famFriends:{_id:req.body.friendId}
       }
-    },{upsert:true,returnDocument:true},async(err,result)=>{
+    },{upsert:true,returnDocument:true},(err,result)=>{
       if(err){
         // return res.status(400).json(err)
       }
       else{
         // return res.status(200).json(result)
-        await User.findOneAndUpdate({_id:req.body.friendId},{
+         User.findOneAndUpdate({_id:req.body.friendId},{
           $push:{
-            famFriends:{$in:[req.body.userId]}
+            famFriends:{_id:req.body.userId}
           }
         },{upsert:true,returnDocument:true},(err,result)=>{
           if(err){
-            return res.status(400).json(err)
+            // return res.status(400).json(err)
           }
           else{
-            return res.status(200).json(result)
+             User.findOneAndUpdate({_id:req.body.userId},{
+              $pull:{
+                famRequestsReceived:{_id:req.body.friendId}
+              } 
+            },(err,result)=>{
+              if(err){
+                return res.status(400).json(err)
+              }
+              else{
+                return res.status(200).json(result)
+              }
+                
+            })
           }
             
         })
@@ -298,4 +311,26 @@ exports.acceptFamFriendRequest=async(req,res)=>{
 catch(e){
 
 }
+}
+
+exports.editUserProfile=async(req,res)=>{
+  try{
+    await User.findOneAndUpdate({_id:req.params.userId},{
+      
+        userName:req.body.userName,
+        profilePicUrl:req.body.profilePicUrl
+    },{returnDocument:true,new:true},(err,result)=>{
+      if(err){
+        return res.status(400).json(err)
+      
+      }
+      else{
+       return res.status(200).json(result)
+      }
+    })
+    
+  }
+  catch(e){
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
 }
