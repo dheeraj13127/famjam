@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 import {useDispatch} from 'react-redux'
 import { useNavigate } from "react-router-dom";
-import fortuneWheel from "../../../../assets/other/fortuneWheel.png";
+import surpbox from "../../../../assets/other/surpbox.png";
 import { motion } from "framer-motion";
 import { rightSidebarType } from "../../../../redux/actionTypes/types";
 import { userSignout } from "../../../../redux/actions";
@@ -100,14 +100,14 @@ function RightSideBar(props: rightSidebarType) {
                   >
                     <motion.img
                       className="dahsboardSidebarWheelImg"
-                      src={fortuneWheel}
+                      src={surpbox}
                       animate={{ rotate: [-360, 360] }}
                       transition={{ repeat: Infinity, duration: 5 }}
                     ></motion.img>
                   </motion.div>
                 </Button>
                 <Label as="a" href="/dashboard/spinAndWin"  basic color="blue" pointing="left">
-                  Spin & Win
+                Hit & Win
                 </Label>
               </Button>
             </Menu.Item>

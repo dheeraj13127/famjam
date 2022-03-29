@@ -2,11 +2,43 @@
     padding: 10px 30px !important;
     max-height: 80vh !important;
    overflow-y: auto;
+   
   
+}
+.spinAndWinHeader{
+    font-family: 'Poppins',sans-serif !important;
 }
 .spinAndWinSpinnerBox{
     border: 1px solid white !important;
     
-    padding: 15px !important;
+    padding: 25px 15px !important;
     margin-top: 50px !important;
+}
+.hitandWinBox{
+    display: flex !important;
+    justify-content: center !important;
+}
+.HitAndWinCard{
+    height: 300px !important;
+    width: 300px !important;
+    border-radius: 10px !important;
+   background-color: white !important;
+   
+}
+.hammerImg{
+    margin-top: 50px !important;
+
+}
+.famiesCount{
+    color: #C2AC4B !important;
+}
+.explosionBox{
+    display: flex !important;
+    justify-content: center !important;
+}
+.winMessageBoxText{
+    text-align: center !important;
+    margin-top: 30px !important;
+    font-family: "Poppins",sans-serif !important;
+    font-weight: 600 !important;
 }

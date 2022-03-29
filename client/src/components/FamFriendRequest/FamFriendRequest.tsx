@@ -4,6 +4,7 @@ import {
   Button,
   Dimmer,
   Grid,
+  Header,
   Image,
   Label,
   Loader,
@@ -41,9 +42,15 @@ function FamFriendRequest() {
           >
             <div>
               {userData ? (
-                <div className="famFriendRequestDataBox">
+                <>
+                 <Header textAlign="center" as="h3">
+                        <Label className="spinAndWinHeader" color="blue" size="huge">
+                        Fam Friend Requests
+                        </Label>
+                        </Header>
+                        <div className="famFriendRequestDataBox">
                   <Label as="a" color="red" ribbon>
-                    Fam Friend Requests
+                    Choose a wise friend
                   </Label>
                   <Image
                     centered
@@ -96,6 +103,8 @@ function FamFriendRequest() {
                   }
                 
                 </div>
+                </>
+              
               ) : (
                 <Dimmer active className="noMessageLoader">
                   <Loader>Loading...</Loader>

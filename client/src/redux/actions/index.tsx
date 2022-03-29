@@ -299,7 +299,7 @@ export const startChatConversation=(senderId:string,receiverId:string)=>async(di
 }
 
 export const userProfileEdit=(userId:any,userName:string,profilePicUrl:string)=>async(dispatch:any)=>{
-  console.log(userId,userName,profilePicUrl)
+  
     const data={
       userName:userName,
       profilePicUrl:profilePicUrl
@@ -307,6 +307,22 @@ export const userProfileEdit=(userId:any,userName:string,profilePicUrl:string)=>
     await axios.put(`https://famjams.herokuapp.com/auth/editUserProfile/${userId}`,data)
     .then(res=>{
       toast.success("Updated Successfully")
+    })
+    .catch(err=>{
+      toast.error("Something went wrong !")
+    })
+}
+export const updateNewFamies=(userId:any,newFamies:number,navigate:any)=>async(dispatch:any)=>{
+
+    const data={
+     newFamies:newFamies
+    }
+    await axios.put(`https://famjams.herokuapp.com/auth/updateFamies/${userId}`,data)
+    .then(res=>{
+      toast.success("Successfully transfered famies")
+      setTimeout(()=>{
+        navigate("/dashboard")
+      },4000)
     })
     .catch(err=>{
       toast.error("Something went wrong !")

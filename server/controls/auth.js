@@ -334,3 +334,45 @@ exports.editUserProfile=async(req,res)=>{
     // res.status(500).json({ success: false, message: "Something went wrong !" });
   }
 }
+exports.editUserProfile=async(req,res)=>{
+  try{
+    await User.findOneAndUpdate({_id:req.params.userId},{
+      
+        userName:req.body.userName,
+        profilePicUrl:req.body.profilePicUrl
+    },{returnDocument:true,new:true},(err,result)=>{
+      if(err){
+        return res.status(400).json(err)
+      
+      }
+      else{
+       return res.status(200).json(result)
+      }
+    })
+    
+  }
+  catch(e){
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
+}
+
+exports.updateFamies=async(req,res)=>{
+  try{
+    await User.findOneAndUpdate({_id:req.params.userId},{
+      famies:req.body.newFamies
+        
+    },{returnDocument:true,new:true},(err,result)=>{
+      if(err){
+        return res.status(400).json(err)
+      
+      }
+      else{
+       return res.status(200).json(result)
+      }
+    })
+    
+  }
+  catch(e){
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
+}
