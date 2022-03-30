@@ -19,6 +19,7 @@ export type signUpType = {
   famRequestsReceived: string[];
   famRequestsSent: string[];
   firstSignUp: boolean;
+  famiesDay:number;
 };
 export type signInType = {
   email: string;
@@ -97,6 +98,7 @@ export type rightSidebarType = {
     famRequestsSent: string[];
     firstSignUp: boolean;
     _id: string;
+    famiesDay:number
   };
   rightVisible: boolean;
 };

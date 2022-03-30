@@ -21,6 +21,7 @@ function RightSideBar(props: rightSidebarType) {
     const onSignout=()=>{
         dispatch(userSignout(navigate))
     }
+let currentDay=new Date().getDay()
 
   return (
     <>
@@ -87,7 +88,7 @@ function RightSideBar(props: rightSidebarType) {
            
             <Menu.Item link  className="dashboardSidebarMenuItem">
 
-              <Button as="div" labelPosition="right" >
+              <Button as="div" labelPosition="right" disabled={props.userData.famiesDay!==currentDay?true:false}>
                 <Button color="blue">
                   <motion.div
                     animate={{
@@ -106,8 +107,11 @@ function RightSideBar(props: rightSidebarType) {
                     ></motion.img>
                   </motion.div>
                 </Button>
-                <Label as="a" href="/dashboard/spinAndWin"  basic color="blue" pointing="left">
-                Hit & Win
+                <Label as="a" href="/dashboard/hitAndWin"  basic color="blue" pointing="left">
+                  {
+                    props.userData.famiesDay!==currentDay?"Available on next day":"Hit and Win"
+                  }
+                
                 </Label>
               </Button>
             </Menu.Item>

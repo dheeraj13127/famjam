@@ -53,6 +53,10 @@ const userSchema = new mongoose.Schema({
       type:Boolean,
       required:true
   },
+  famiesDay:{
+    type:Number,
+    required:true
+  },
   createdDate: {
     type: Date,
     default: Date.now,

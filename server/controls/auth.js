@@ -44,6 +44,7 @@ exports.googleSignUp = async (req, res) => {
                 message: "Email address already exists",
               });
             } else {
+              let day=new Date().getDay()
               let password = iat + email + process.env.JWT_SIGNIN_KEY;
               let newUser = new User({
                 firstName: given_name,
@@ -58,6 +59,7 @@ exports.googleSignUp = async (req, res) => {
                 famRequestsReceived: [],
                 famRequestsSent: [],
                 firstSignUp: false,
+                famiesDay:day
               });
               newUser.save((err, data) => {
                 if (err) {
@@ -360,6 +362,26 @@ exports.updateFamies=async(req,res)=>{
   try{
     await User.findOneAndUpdate({_id:req.params.userId},{
       famies:req.body.newFamies
+        
+    },{returnDocument:true,new:true},(err,result)=>{
+      if(err){
+        return res.status(400).json(err)
+      
+      }
+      else{
+       return res.status(200).json(result)
+      }
+    })
+    
+  }
+  catch(e){
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
+}
+exports.updateFamiesDay=async(req,res)=>{
+  try{
+    await User.findOneAndUpdate({_id:req.params.userId},{
+      famiesDay:req.body.newDay
         
     },{returnDocument:true,new:true},(err,result)=>{
       if(err){

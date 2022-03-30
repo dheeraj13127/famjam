@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Button,
+ 
   Dimmer,
   Grid,
   Header,
@@ -16,13 +16,17 @@ import "../../styles/SpinAndWinStyles/SpinAndWin.scss";
 import ConfettiExplosion from "react-confetti-explosion";
 import surpbox from "../../assets/other/surpbox.png";
 import surpboxopen from "../../assets/other/surpboxopen.png";
-import { updateNewFamies } from "../../redux/actions";
-import { useNavigate } from "react-router-dom";
+import { updateFamiesDay, updateNewFamies } from "../../redux/actions";
+
 
 function SpinAndWin() {
+  
   let userData = useSelector<famReducerState, famReducerState["userData"]>(
     (state) => state.userData
   );
+  let day=new Date().getDay()
+  let userDay=userData&&userData.famiesDay
+ 
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   let oldFamies=userData&&userData.famies
   
@@ -31,13 +35,30 @@ function SpinAndWin() {
   let randIndex=Math.floor(rand*randomFamies.length)
   const [isExploding, setIsExploding] = React.useState(false);
   const dispatch=useDispatch()
-  const navigate=useNavigate()
+
+
+ 
+
+ 
     const onHitBox=(famies:number)=>{
+     
       setIsExploding(true)
       let newFamies=oldFamies+famies
-      dispatch(updateNewFamies(famJamUserId,newFamies,navigate))
-
+      
+      
+      dispatch(updateNewFamies(famJamUserId,newFamies))
+      if(userDay!==6){
+        dispatch(updateFamiesDay(famJamUserId,day+1))
+      }
+      else{
+        dispatch(updateFamiesDay(famJamUserId,0))
+      }
+     
     }
+
+
+
+
   return (
     <div className="spinAndWinContainer">
       <Grid>

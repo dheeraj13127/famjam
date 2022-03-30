@@ -49,7 +49,7 @@ function Dashboard() {
           <Route path="/" element={<ChatComponent activateMessage={activateMessage} setActivateMessage={setActivateMessage}  message={message} setMessage={setMessage} />}/>
           <Route path="/addFamFriend" element={<AddFamFriend/>}/>
           <Route path="/famFriendRequest" element={<FamFriendRequest/>}/>
-          <Route path="/spinAndWin" element={<SpinAndWin/>}/>
+          <Route path="/hitAndWin" element={<SpinAndWin/>}/>
         </Routes>
       </DashboardSideBar>
       

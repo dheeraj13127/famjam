@@ -35,6 +35,7 @@ function SignUp() {
     if(user.password!==user.confirmPassword){
       toast.error("Passwords doesn't match")
     }
+    let day=new Date().getDay()
     let newUser={
       firstName:user.firstName,
       lastName:user.lastName,
@@ -46,7 +47,8 @@ function SignUp() {
       famFriends:[],
       famRequestsReceived:[],
       famRequestsSent:[],
-      firstSignUp:false
+      firstSignUp:false,
+      famiesDay:day
     }
     dispatch(userSignUp(newUser,navigate))
   }
