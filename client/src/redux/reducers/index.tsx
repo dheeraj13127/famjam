@@ -1,6 +1,6 @@
 import { actionType } from '../actions'
 import { famFriendsType } from '../actionTypes/types'
-import { GOOGLE_SIGNUP_SUCCESS,GOOGLE_SIGNIN_SUCCESS,SIGNUP_SUCCESS,SIGNIN_SUCCESS, GET_USER_PROFILE, GET_FAM_FRIENDS, GET_CONVERSATIONS, SET_CURRENT_CONVERSATIONS, CURRENT_FRIEND_MESSAGE, GET_CURRENT_CONVERSATION_ID, GET_INDIVIDUAL_CONVERSATION } from '../constants/constants'
+import { GOOGLE_SIGNUP_SUCCESS,GOOGLE_SIGNIN_SUCCESS,SIGNUP_SUCCESS,SIGNIN_SUCCESS, GET_USER_PROFILE, GET_FAM_FRIENDS, GET_CONVERSATIONS, SET_CURRENT_CONVERSATIONS, CURRENT_FRIEND_MESSAGE, GET_CURRENT_CONVERSATION_ID, GET_INDIVIDUAL_CONVERSATION, GET_VIDEOCALL_FRIEND_PROFILE, GET_ONLINE_USERS } from '../constants/constants'
 export interface famReducerState{
     googleSignUpId:string,
     googleSignInId:string,
@@ -12,7 +12,9 @@ export interface famReducerState{
     currentMessages:any,
     friend:any,
     currentConversationId:string
-    conversationData:any
+    conversationData:any,
+    videoCallFriendData:any
+    onlUsers:any
 }
 
 const initState={
@@ -27,7 +29,9 @@ const initState={
     currentMessages:null,
     friend:null,
     currentConversationId:"",
-    conversationData:null
+    conversationData:null,
+    videoCallFriendData:null,
+    onlUsers:null
 }
 
 export const famReducer=(state:famReducerState=initState,action:actionType)=>{
@@ -95,6 +99,18 @@ export const famReducer=(state:famReducerState=initState,action:actionType)=>{
         case GET_INDIVIDUAL_CONVERSATION:{
             return Object.assign({},state,{
                 conversationData:action.payload,
+          
+              })
+        }
+        case GET_VIDEOCALL_FRIEND_PROFILE:{
+            return Object.assign({},state,{
+                videoCallFriendData:action.payload,
+          
+              })
+        }
+        case GET_ONLINE_USERS:{
+            return Object.assign({},state,{
+                onlUsers:action.payload,
           
               })
         }

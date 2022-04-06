@@ -16,7 +16,7 @@ const io = require('socket.io')(server,{
 });
 // const io=require("socket.io")(process.env.PORT,{
 //   cors:{
-//     origin:"https://fam-jam.netlify.app"
+//     origin:"http://localhost:3000"
 //   }
 // })
 
@@ -36,7 +36,7 @@ const addUser=(userId,socketId)=>{
  
 }
 const getUser=(userId)=>{
-  
+
   return users.find(user=>user.userId===userId)
  
 }
@@ -44,7 +44,7 @@ const removeUser=(socketId)=>{
   users=users.filter(user=>user.socketId!==socketId)
 }
 io.on("connection",(socket)=>{ 
-  console.log("User connected !")
+      
   socket.on("addUser",userId=>{
     addUser(userId,socket.id)
     io.emit("getUsers",users)
@@ -60,9 +60,27 @@ io.on("connection",(socket)=>{
       })
     }
     
+  })
+  socket.emit("me",socket.id) 
+  
+  socket.on("calluser",data=>{
+    
+    let user=getUser(data.userToCall)
+    if(user!==undefined){
+    io.to(user.socketId).emit("callUser",{
+      signal:data.signalData, 
+      from:data.from,
+      
+    }) 
+  }
   }) 
+ 
+  socket.on("answerCall",data=>{
+    io.to(data.to).emit("callAccepted",data.signal)
+  })
+
   socket.on("disconnect",()=>{
-    console.log("User has disconnected")
+
     removeUser(socket.id)
     io.emit("getUsers",users)
   })

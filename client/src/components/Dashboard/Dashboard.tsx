@@ -6,10 +6,14 @@ import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
 import { AddFamFriend, ChatComponent, FamFriendRequest, SpinAndWin } from "../GlobalExports";
+import FamFriendsDisplay from "../FamFriendsDisplay/FamFriendsDisplay";
 
+type dashboardType={
+  setOnlineUsers:any
+  onlineUsers:any
+}
 
-
-function Dashboard() {
+function Dashboard({setOnlineUsers,onlineUsers}:dashboardType) {
   const dispatch = useDispatch();
   
   const [conversations,setConversations]=useState([])
@@ -46,10 +50,11 @@ function Dashboard() {
     <div style={{ background: "black" }}>
       <DashboardSideBar setActivateMessage={setActivateMessage}   conversations={conversations} message={message} setMessage={setMessage} userData={userData}>
         <Routes>
-          <Route path="/" element={<ChatComponent activateMessage={activateMessage} setActivateMessage={setActivateMessage}  message={message} setMessage={setMessage} />}/>
+          <Route path="/" element={<ChatComponent onlineUsers={onlineUsers} setOnlineUsers={setOnlineUsers}  activateMessage={activateMessage} setActivateMessage={setActivateMessage}  message={message} setMessage={setMessage} />}/>
           <Route path="/addFamFriend" element={<AddFamFriend/>}/>
           <Route path="/famFriendRequest" element={<FamFriendRequest/>}/>
           <Route path="/hitAndWin" element={<SpinAndWin/>}/>
+          <Route path="/famFriends" element={<FamFriendsDisplay/>}/>
         </Routes>
       </DashboardSideBar>
       

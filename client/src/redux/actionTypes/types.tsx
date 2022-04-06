@@ -108,6 +108,8 @@ export type chatComponentType={
   setMessage:any,
   activateMessage:boolean,
   setActivateMessage:any
+  setOnlineUsers:any,
+  onlineUsers:any
 
 
 }

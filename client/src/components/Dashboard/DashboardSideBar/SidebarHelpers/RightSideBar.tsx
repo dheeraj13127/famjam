@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Menu,
   Sidebar,
@@ -22,6 +22,8 @@ function RightSideBar(props: rightSidebarType) {
         dispatch(userSignout(navigate))
     }
 let currentDay=new Date().getDay()
+
+
 
   return (
     <>
@@ -68,7 +70,10 @@ let currentDay=new Date().getDay()
             </Menu.Item>
             <Menu.Item link className="dashboardSidebarMenuItem">
               <Button as="div" labelPosition="right" >
-                <Button color="blue">Fam friends</Button>
+                <a href="/dashboard/famFriends" className="ui button primary" >
+                Fam friends
+                </a>
+                
                 <Label as="a" basic color="blue" pointing="left">
                   {props.userData.famFriends.length}
                 </Label>
@@ -88,7 +93,7 @@ let currentDay=new Date().getDay()
            
             <Menu.Item link  className="dashboardSidebarMenuItem">
 
-              <Button as="div" labelPosition="right" disabled={props.userData.famiesDay!==currentDay?true:false}>
+              <Button as="div" labelPosition="right" disabled={props.userData.famiesDay===currentDay?true:false}>
                 <Button color="blue">
                   <motion.div
                     animate={{
@@ -109,7 +114,7 @@ let currentDay=new Date().getDay()
                 </Button>
                 <Label as="a" href="/dashboard/hitAndWin"  basic color="blue" pointing="left">
                   {
-                    props.userData.famiesDay!==currentDay?"Available on next day":"Hit and Win"
+                    props.userData.famiesDay===currentDay?"Available on next day":"Hit and Win"
                   }
                 
                 </Label>

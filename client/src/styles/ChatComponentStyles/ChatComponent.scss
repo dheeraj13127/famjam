@@ -43,3 +43,10 @@ body ::-webkit-scrollbar-track{
 .react-emoji{
     flex-direction: row-reverse !important;
 }
+@media only screen and (max-width: 600px) {
+    .chatComponentContainer{
+        padding: 10px 20px !important;
+       
+     
+    }
+    }

@@ -48,7 +48,7 @@ function SpinAndWin() {
       
       dispatch(updateNewFamies(famJamUserId,newFamies))
       if(userDay!==6){
-        dispatch(updateFamiesDay(famJamUserId,day+1))
+        dispatch(updateFamiesDay(famJamUserId,day))
       }
       else{
         dispatch(updateFamiesDay(famJamUserId,0))

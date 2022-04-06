@@ -5,7 +5,9 @@ import {
   GET_CURRENT_CONVERSATION_ID,
   GET_FAM_FRIENDS,
   GET_INDIVIDUAL_CONVERSATION,
+  GET_ONLINE_USERS,
   GET_USER_PROFILE,
+  GET_VIDEOCALL_FRIEND_PROFILE,
   GOOGLE_SIGNUP_SUCCESS,
   SET_CURRENT_CONVERSATIONS,
   SIGNUP_SUCCESS,
@@ -362,3 +364,22 @@ export const updateFamiesDay =
         toast.error("Something went wrong !");
       });
   };
+
+  export const getVideoCallFriendProfile=(friendId:any)=>async(dispatch:any)=>{
+    await axios
+    .get(`https://famjams.herokuapp.com/auth/getFriendProfile/${friendId}`)
+    .then(res=>{
+      dispatch({
+        type: GET_VIDEOCALL_FRIEND_PROFILE,
+          payload: res.data,
+      })
+      
+    })
+    .catch(err=>{})
+  }
+  export const getOnlineUsers=(users:any)=>async(dispatch:any)=>{
+    dispatch({
+      type:GET_ONLINE_USERS,
+      payload:users
+    })
+  }

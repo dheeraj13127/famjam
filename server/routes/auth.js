@@ -11,6 +11,7 @@ router.post('/getProfile',getProfile)
 router.get('/getFamFriends/:userId',getFamFriends)
 router.post('/updateFriendRequest',updateFriendRequests)
 router.get('/getFriendProfile/:friendId',getFriendProfile)
+
 router.post('/deleteFamFriendRequest',deleteFamFriendRequest)
 router.post('/acceptFamFriendRequest',acceptFamFriendRequest)
 router.put('/editUserProfile/:userId',editUserProfile)

@@ -56,10 +56,14 @@ function AddFamFriend() {
             tablet={16}
             
           >
-              
+               <Header textAlign="center" as="h3">
+                        <Label className="spinAndWinHeader" color="blue" size="huge">
+                        Add Fam Friend
+                        </Label>
+                        </Header>
             {userData ? (
               <div className="userShareProfileBox">
-              <Label as='a' color="red" ribbon>Add Fam Friend</Label>
+              <Label as='a' color="red" ribbon>Connect with your close friend</Label>
               
              
                 <Image

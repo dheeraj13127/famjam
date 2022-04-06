@@ -4,10 +4,13 @@ import { NewMessageInput, NoMessage, PrivateMessage } from ".";
 import "../../styles/ChatComponentStyles/ChatComponent.scss";
 import { chatComponentType } from "../../redux/actionTypes/types";
 import {io} from 'socket.io-client'
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { famReducerState } from "../../redux/reducers";
 
-function ChatComponent({ message, setMessage,activateMessage }: chatComponentType) {
+import { getOnlineUsers } from "../../redux/actions";
+
+function ChatComponent({ message, setMessage,activateMessage,onlineUsers }: chatComponentType) {
+  const dispatch=useDispatch()
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   const [arrivalMessage,setArrivalMessage]=useState<any>(null)
 
@@ -18,6 +21,7 @@ function ChatComponent({ message, setMessage,activateMessage }: chatComponentTyp
   const socket=useRef<any>()
   useEffect(()=>{
     socket.current=io("https://famjams.herokuapp.com")
+    
     socket.current.on("getMessage",(data:any)=>{
       
       setArrivalMessage({
@@ -40,11 +44,10 @@ function ChatComponent({ message, setMessage,activateMessage }: chatComponentTyp
   useEffect(()=>{
     socket.current.emit("addUser",famJamUserId)
     socket.current.on("getUsers",(users:any)=>{
-    
+     
+     dispatch(getOnlineUsers(users))
     })
   },[famJamUserId])
-
-  
 
   return (
     <div className="chatComponentContainer">
@@ -92,7 +95,7 @@ function ChatComponent({ message, setMessage,activateMessage }: chatComponentTyp
                   newMessages={newMessages}
                   setNewMessages={setNewMessages}
                   socket={socket}
-                
+                  onlineUsers={onlineUsers}
                 />
               </>
             ) : (

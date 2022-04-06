@@ -5,6 +5,7 @@ import { famReducerState } from "../../../../redux/reducers";
 import { useDispatch } from "react-redux";
 import { createNewMessage } from "../../../../redux/actions";
 import InputEmoji from "react-input-emoji";
+import { useNavigate } from "react-router-dom";
 type newMessageType = {
   newMessages: string;
   setNewMessages: any;
@@ -12,6 +13,7 @@ type newMessageType = {
   setMessage: any;
   message: any;
   socket: any;
+  onlineUsers:any
 };
 
 function NewMessageInput({
@@ -21,6 +23,7 @@ function NewMessageInput({
   setMessage,
   message,
   socket,
+  onlineUsers
 }: newMessageType) {
   const conversationId = useSelector<
     famReducerState,
@@ -36,7 +39,7 @@ function NewMessageInput({
 
   const newMessageSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if(newMessages!==""){
+    if (newMessages !== "") {
       const newMessage = {
         conversationId: conversationId,
         sender: famJamUserId,
@@ -48,43 +51,32 @@ function NewMessageInput({
         receiverId: friend._id,
         text: newMessage,
       });
-  
+
       setNewMessages("");
     }
- 
   };
- 
-
- 
+const navigate=useNavigate()
   return (
     <>
-      {/* <Button icon primary className="chatEmojiButton">
-              <Icon name="smile outline" />
-            </Button>
-            <Input
-                value={newMessages}
-                onChange={onNewMessageChange}
-              className="chatComponentMessageType"
-              placeholder="Search..."
-            />
-            <Button icon primary className="chatSendButton" animated onClick={newMessageSubmit}>
-              <Button.Content visible>Send</Button.Content>
-              <Button.Content hidden>
-                <Icon name="send" />
-              </Button.Content>
-            </Button> */}
+     
+          
+    
+        <Button circular icon className="chatSendButton" onClick={()=>navigate(`/videoCall/${friend._id}`)}>
+        {/* <a href={`/videoCall/${friend._id}`}> */}
+          <Icon className="chatSendIcon" name="video" />
+          {/* </a> */}
+        </Button>
+     
+
       <InputEmoji
         value={newMessages}
         onChange={setNewMessages}
         cleanOnEnter
-       
         placeholder="Type a message"
       />
       <Button
-      circular
-            
+        circular
         icon
-        
         className="chatSendButton"
         onClick={newMessageSubmit}
       >
