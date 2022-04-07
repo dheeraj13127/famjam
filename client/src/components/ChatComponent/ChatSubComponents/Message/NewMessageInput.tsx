@@ -61,10 +61,10 @@ const navigate=useNavigate()
      
           
     
-        <Button circular icon className="chatSendButton" onClick={()=>navigate(`/videoCall/${friend._id}`)}>
-        {/* <a href={`/videoCall/${friend._id}`}> */}
+        <Button circular icon className="chatSendButton">
+        <a href={`/videoCall/${friend._id}`}>
           <Icon className="chatSendIcon" name="video" />
-          {/* </a> */}
+          </a>
         </Button>
      
 

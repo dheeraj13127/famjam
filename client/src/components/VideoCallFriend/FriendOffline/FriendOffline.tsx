@@ -21,7 +21,7 @@ function FriendOffline({ receivingCall,acceptCall }: friendOfflineType) {
   return (
     <div className="friendOfflineBox ">
       {
-        friendData&&(
+        // friendData&&(
           <Header as="h3" textAlign="center">
           {receivingCall ? (
             <Message color="black">
@@ -42,7 +42,7 @@ function FriendOffline({ receivingCall,acceptCall }: friendOfflineType) {
             </Message>
           )}
         </Header>
-        )
+        // )
       }
      
     </div>

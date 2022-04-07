@@ -41,7 +41,7 @@ function AddFamFriend() {
     });
   };
 
-  const shareUrl = userData&&userData._id;
+  const shareUrl = userData&&<a href="https://fam-jam.netlify.app/">{userData._id}</a>
   const title = "FamJam User ID";
   return (
     <div className="addFamFriendContainer">

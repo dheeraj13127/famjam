@@ -147,7 +147,7 @@ function VideoCallFriend({onlineUsers,setOnlineUsers}:videoCallFriendType) {
   
   connectionRef.current=null
   window.location.href="/dashboard"
-
+  
 }
 
 
@@ -183,7 +183,7 @@ function VideoCallFriend({onlineUsers,setOnlineUsers}:videoCallFriendType) {
                  
                   <AfterCall offVideo={offVideo} setOffVideo={setOffVideo} stream={stream} leaveCall={leaveCall} mute={mute} setMute={setMute}/>
                 ):(
-                  <BeforeCall callUser={callUser} id={id} receivingCall={receivingCall}/>
+                  <BeforeCall stream={stream} mute={mute} setMute={setMute} callUser={callUser} id={id} receivingCall={receivingCall}/>
                 )
               }
               </Grid.Column>

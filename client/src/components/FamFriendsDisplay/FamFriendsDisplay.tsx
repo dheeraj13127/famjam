@@ -21,7 +21,7 @@ function FamFriendsDisplay() {
     famReducerState,
     famReducerState["famFriendsData"]
   >((state) => state.famFriendsData);
-  console.log(famFriendsData);
+
   return (
     <div className="famFriendsDisplayContainer">
       <Grid>
@@ -72,7 +72,7 @@ function FamFriendsDisplay() {
                         </Label>
                         </div>
                        
-                        <Button color="red" className="friendRemoveButton">
+                        <Button  className="friendRemoveButton">
                           Remove friend
                         </Button>
                       </Message>
