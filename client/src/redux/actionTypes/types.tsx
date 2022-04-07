@@ -82,6 +82,7 @@ export type leftSidebarType = {
   setMessage:any
   conversations:any,
   setActivateMessage:any
+  closeLeftSidebar:()=>void
   
 };
 export type rightSidebarType = {
@@ -101,6 +102,7 @@ export type rightSidebarType = {
     famiesDay:number
   };
   rightVisible: boolean;
+  closeRightSidebar:()=>void
 };
 
 export type chatComponentType={

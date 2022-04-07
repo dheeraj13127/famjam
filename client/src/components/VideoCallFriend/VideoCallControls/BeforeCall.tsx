@@ -20,6 +20,8 @@ function BeforeCall({callUser,id,receivingCall,setMute,stream,mute}:BeforeCallTy
   }
   return (
    <Header textAlign='center' as="h4">
+     
+        <Message color="black" className="videoCallControlsBox">
      {
        !receivingCall&&(
          <>
@@ -57,7 +59,7 @@ function BeforeCall({callUser,id,receivingCall,setMute,stream,mute}:BeforeCallTy
 
        )
      }
-     
+     </Message>
    </Header>
   )
 }

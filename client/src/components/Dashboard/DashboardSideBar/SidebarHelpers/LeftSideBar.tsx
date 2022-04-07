@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Menu,
   Sidebar,
@@ -24,6 +24,7 @@ import {
 } from "../../../../redux/actions";
 import { famReducerState } from "../../../../redux/reducers";
 import { useLocation } from "react-router-dom";
+
 function LeftSideBar({
   visible,
   userData,
@@ -31,13 +32,26 @@ function LeftSideBar({
   setMessage,
   conversations,
   setActivateMessage,
+  closeLeftSidebar
+ 
 }: leftSidebarType) {
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   const dispatch = useDispatch();
   const [backActive, setBackActive] = useState(false);
   const [currentChatId, setCurrentChatId] = useState("");
   const location = useLocation();
-
+  const leftRef = useRef<any>(null);
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (leftRef.current && !leftRef.current.contains(event.target)) {
+        closeLeftSidebar && closeLeftSidebar();
+      }
+    };
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [ closeLeftSidebar ]);
   useEffect(() => {
     currentChatId !== "" &&
       dispatch(setCurrentConversation(currentChatId, setMessage));
@@ -67,7 +81,7 @@ function LeftSideBar({
   };
 
   return (
-    <>
+    <div ref={leftRef}>
       <Sidebar
         as={Menu}
         animation="overlay"
@@ -77,6 +91,7 @@ function LeftSideBar({
         vertical
         inverted
         className="dashboardSidebarLeftMenu"
+        
       >
         {userData ? (
           <>
@@ -175,7 +190,7 @@ function LeftSideBar({
           <></>
         )}
       </Sidebar>
-    </>
+    </div>
   );
 }
 

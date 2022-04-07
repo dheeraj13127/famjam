@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Menu,
   Sidebar,
@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { rightSidebarType } from "../../../../redux/actionTypes/types";
 import { userSignout } from "../../../../redux/actions";
 import randomUser from '../../../../assets/other/randomUser.png'
+
 function RightSideBar(props: rightSidebarType) {
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -23,10 +24,20 @@ function RightSideBar(props: rightSidebarType) {
     }
 let currentDay=new Date().getDay()
 
-
-
+const rightRef = useRef<any>(null);
+useEffect(() => {
+  const handleClickOutside = (event:any) => {
+    if (rightRef.current && !rightRef.current.contains(event.target)) {
+      props.closeRightSidebar && props.closeRightSidebar();
+    }
+  };
+  document.addEventListener('click', handleClickOutside, true);
+  return () => {
+    document.removeEventListener('click', handleClickOutside, true);
+  };
+}, [ props.closeRightSidebar ]);
   return (
-    <>
+    <div ref={rightRef}>
       <Sidebar
         as={Menu}
         animation="overlay"
@@ -136,7 +147,7 @@ let currentDay=new Date().getDay()
             
         )}
       </Sidebar>
-    </>
+    </div>
   );
 }
 

@@ -64,11 +64,11 @@ function VideoCallFriend({onlineUsers,setOnlineUsers}:videoCallFriendType) {
       .getUserMedia({ video: true, audio: true })
       .then((stream:MediaStream) => {
         setStream(stream);
-        
+
       });
 
   };
-  
+
   const dispatch = useDispatch();
   
   let userProfile = {
