@@ -9,11 +9,12 @@ import { famReducerState } from "../../redux/reducers";
 
 import { getOnlineUsers } from "../../redux/actions";
 
-function ChatComponent({ message, setMessage,activateMessage,onlineUsers }: chatComponentType) {
+function ChatComponent({ message, setMessage,activateMessage,onlineUsers,setOnlineUsers }: chatComponentType) {
+  
   const dispatch=useDispatch()
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   const [arrivalMessage,setArrivalMessage]=useState<any>(null)
-
+  
   const conversationData=useSelector<famReducerState,famReducerState["conversationData"]>(state=>state.conversationData)
 
   const [newMessages, setNewMessages] = useState("");
@@ -44,7 +45,7 @@ function ChatComponent({ message, setMessage,activateMessage,onlineUsers }: chat
   useEffect(()=>{
     socket.current.emit("addUser",famJamUserId)
     socket.current.on("getUsers",(users:any)=>{
-     
+     setOnlineUsers(users)
      dispatch(getOnlineUsers(users))
     })
   },[famJamUserId])

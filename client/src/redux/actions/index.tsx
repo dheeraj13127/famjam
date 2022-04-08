@@ -335,13 +335,13 @@ export const userProfileEdit =
       });
   };
 export const updateNewFamies =
-  (userId: any, newFamies: number) => async (dispatch: any) => {
+  (userId: any, newFamies: number,nfamies:number) => async (dispatch: any) => {
     const data = {
       newFamies: newFamies,
     };
     await axios.put(`https://famjams.herokuapp.com/auth/updateFamies/${userId}`,data)
     .then(res=>{
-      toast.success("Successfully transfered famies")
+      toast.success(`Successfully transfered ${nfamies} famies`)
 
     })
     .catch(err=>{
@@ -358,7 +358,7 @@ export const updateFamiesDay =
       .then((res) => {
         setTimeout(() => {
           window.location.pathname = "/dashboard";
-        }, 4000);
+        }, 6500);
       })
       .catch((err) => {
         toast.error("Something went wrong !");

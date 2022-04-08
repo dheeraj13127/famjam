@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar, Menu, Icon, Image, Input, Header } from "semantic-ui-react";
 import "../../../styles/DashboardStyles/DashboardSidebar.scss";
 import famjam from "../../../assets/logos/famjamnew.png";
-import { userDataType } from "../../../redux/actionTypes/types";
-import { useDetectClickOutside } from 'react-detect-click-outside';
+
 import { LeftSideBar,RightSideBar } from "..";
+
 function DashboardSideBar(props: any) {
   const [visible, setVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
@@ -56,7 +56,7 @@ function DashboardSideBar(props: any) {
       </Menu>
       
       <Sidebar.Pushable className="mobile hidden tablet hidden dashboardSidebarBox">
-        <LeftSideBar closeLeftSidebar={closeLeftSidebar}  setActivateMessage={props.setActivateMessage}  conversations={props.conversations} visible={visible} userData={props.userData} message={props.message} setMessage={props.setMessage} />
+        <LeftSideBar onlineUsers={props.onlineUsers} closeLeftSidebar={closeLeftSidebar}  setActivateMessage={props.setActivateMessage}  conversations={props.conversations} visible={visible} userData={props.userData} message={props.message} setMessage={props.setMessage} />
         <RightSideBar closeRightSidebar={closeRightSidebar}   userData={props.userData} rightVisible={rightVisible} />
         <Sidebar.Pusher>
               {props.children}
@@ -64,7 +64,7 @@ function DashboardSideBar(props: any) {
         </Sidebar.Pusher>
       </Sidebar.Pushable>
       <Sidebar.Pushable className="mobile only tablet only dashboardSidebarBox">
-        <LeftSideBar closeLeftSidebar={closeLeftSidebar}  setActivateMessage={props.setActivateMessage}  conversations={props.conversations} visible={!visible} userData={props.userData} message={props.message} setMessage={props.setMessage}/>
+        <LeftSideBar onlineUsers={props.onlineUsers} closeLeftSidebar={closeLeftSidebar}  setActivateMessage={props.setActivateMessage}  conversations={props.conversations} visible={!visible} userData={props.userData} message={props.message} setMessage={props.setMessage}/>
         <RightSideBar closeRightSidebar={closeRightSidebar}  userData={props.userData} rightVisible={!rightVisible}  />
         <Sidebar.Pusher>
           {props.children}

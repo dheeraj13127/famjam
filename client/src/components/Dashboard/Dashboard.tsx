@@ -48,7 +48,7 @@ function Dashboard({setOnlineUsers,onlineUsers}:dashboardType) {
 
   return (
     <div style={{ background: "black" }}>
-      <DashboardSideBar setActivateMessage={setActivateMessage}   conversations={conversations} message={message} setMessage={setMessage} userData={userData}>
+      <DashboardSideBar setActivateMessage={setActivateMessage} onlineUsers={onlineUsers}   conversations={conversations} message={message} setMessage={setMessage} userData={userData}>
         <Routes>
           <Route path="/" element={<ChatComponent onlineUsers={onlineUsers} setOnlineUsers={setOnlineUsers}  activateMessage={activateMessage} setActivateMessage={setActivateMessage}  message={message} setMessage={setMessage} />}/>
           <Route path="/addFamFriend" element={<AddFamFriend/>}/>

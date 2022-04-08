@@ -78,7 +78,26 @@
 .dashboardSidebarFriendMenuItem:hover{
   background: none !important;
 }
-
+.showActiveSpan{
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #16AB39 !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top:20px !important;
+  left: 35px !important;
+  z-index: 1 !important;
+}
+.showInActiveSpan{
+  background-color: #D01919 !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top:20px !important;
+  left: 35px !important;
+  z-index: 1 !important;
+}
 @media only screen and (max-width: 1700px) {
   .dashboardSidebarLeftMenu{
     width: 205px !important;
@@ -89,3 +108,13 @@
   width: 205px !important;
 }
   }
+  @media only screen and (max-width: 768px) {
+    .dashboardSidebarLeftMenu{
+      width: 210px !important;
+    
+  }
+  
+  .dashboardSidebarRightMenu{
+    width: 210px !important;
+  }
+    }

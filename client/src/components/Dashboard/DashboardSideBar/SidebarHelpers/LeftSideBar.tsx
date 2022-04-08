@@ -32,10 +32,13 @@ function LeftSideBar({
   setMessage,
   conversations,
   setActivateMessage,
-  closeLeftSidebar
+  closeLeftSidebar,
+  onlineUsers
  
 }: leftSidebarType) {
   let famJamUserId = sessionStorage.getItem("famJamUserId");
+  const onlUsers=useSelector<famReducerState,famReducerState["onlUsers"]>(state=>state.onlUsers)
+
   const dispatch = useDispatch();
   const [backActive, setBackActive] = useState(false);
   const [currentChatId, setCurrentChatId] = useState("");
@@ -79,6 +82,19 @@ function LeftSideBar({
     });
     setActivateMessage(true);
   };
+  
+  const checkActiveUser=(fid:any)=>{
+  
+      let res=onlUsers&&onlUsers.filter((f:any)=>fid===f.userId)
+      if(res&&res.length>0){
+        return true
+      }
+      else{
+        return false
+      }
+    
+  }
+
 
   return (
     <div ref={leftRef}>
@@ -170,6 +186,14 @@ function LeftSideBar({
                         className="friendBtn"
                         onClick={() => setChattingScenario(fr._id, fr)}
                       >
+                        {
+                          checkActiveUser(fr._id)?(
+                            <span className="showActiveSpan"></span>
+                          ):(
+                            <span className="showInActiveSpan"></span>
+                          )
+                        }
+                       
                         <Image
                           src={fr.profilePicUrl}
                           circular

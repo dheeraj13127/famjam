@@ -83,7 +83,7 @@ export type leftSidebarType = {
   conversations:any,
   setActivateMessage:any
   closeLeftSidebar:()=>void
-  
+  onlineUsers:any
 };
 export type rightSidebarType = {
   userData: {

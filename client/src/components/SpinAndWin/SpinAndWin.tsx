@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
  
@@ -30,23 +30,29 @@ function SpinAndWin() {
   let famJamUserId = sessionStorage.getItem("famJamUserId");
   let oldFamies=userData&&userData.famies
   
-  let randomFamies=[5,10,15,20,25,30,35,50]
-  let rand=Math.random()
-  let randIndex=Math.floor(rand*randomFamies.length)
-  const [isExploding, setIsExploding] = React.useState(false);
+
+  const [isExploding, setIsExploding] = useState(false);
   const dispatch=useDispatch()
 
 
- 
 
+    
  
-    const onHitBox=(famies:number)=>{
+    const findRandomFamies=()=>{
+      let randomFamies=[5,10,15,20,25,30,35,50]
+      let rand=Math.random()
+      let randIndex=Math.floor(rand*randomFamies.length)
+      return randomFamies[randIndex]
+    }
+
+    const onHitBox=()=>{
      
       setIsExploding(true)
-      let newFamies=oldFamies+famies
+      let nfamies=findRandomFamies()
+      let newFamies=oldFamies+nfamies
       
       
-      dispatch(updateNewFamies(famJamUserId,newFamies))
+      dispatch(updateNewFamies(famJamUserId,newFamies,nfamies))
       if(userDay!==6){
         dispatch(updateFamiesDay(famJamUserId,day))
       }
@@ -55,7 +61,6 @@ function SpinAndWin() {
       }
      
     }
-
 
 
 
@@ -85,7 +90,7 @@ function SpinAndWin() {
 
                     <div className="hitandWinBox">
                       <Segment
-                        onClick={()=>onHitBox(randomFamies[randIndex])}
+                        onClick={()=>onHitBox()}
                         raised
                         className="HitAndWinCard"
                       >
@@ -118,7 +123,7 @@ function SpinAndWin() {
                           <Message color="black" className="FamJamThoughts" >
                            <Header textAlign="center"><Label color="violet" size="large">Congratulations</Label></Header> 
                             <p className="winMessageBoxText">
-                             You have won <span className="famiesCount">{randomFamies[randIndex]}</span> famies
+                             Wohoo! You have won famies
                             </p>
                           </Message>
                           </div>

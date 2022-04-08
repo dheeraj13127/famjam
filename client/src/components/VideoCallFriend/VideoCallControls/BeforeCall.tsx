@@ -21,10 +21,10 @@ function BeforeCall({callUser,id,receivingCall,setMute,stream,mute}:BeforeCallTy
   return (
    <Header textAlign='center' as="h4">
      
-        <Message color="black" className="videoCallControlsBox">
+       
      {
        !receivingCall&&(
-         <>
+        <Message color="black" className="videoCallControlsBox">
           {mute ? (
             <Button
               size="mini"
@@ -54,12 +54,12 @@ function BeforeCall({callUser,id,receivingCall,setMute,stream,mute}:BeforeCallTy
           <Button onClick={onCallUser} circular color='green'>
     <IoMdCall className='callIcon'/>
      </Button>
-         </>
+     </Message>
          
 
        )
      }
-     </Message>
+    
    </Header>
   )
 }

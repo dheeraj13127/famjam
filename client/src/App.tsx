@@ -6,7 +6,7 @@ import "./App.scss";
 
 function App() {
 
-const [onlineUsers,setOnlineUsers]=useState<any>(false)
+const [onlineUsers,setOnlineUsers]=useState<any>(null)
  
 
   return (
