@@ -124,7 +124,7 @@ function EditProfile() {
                         key={key}
                         className="avatarContainer"
                       >
-                        <Image centered size="tiny" circular src={av} />
+                        <Image loading="lazy" centered size="tiny" circular src={av} />
                       </div>
                     </Grid.Column>
                   ))}
@@ -140,7 +140,7 @@ function EditProfile() {
                         key={key}
                         className="avatarContainer"
                       >
-                        <Image centered size="tiny" circular src={av} />
+                        <Image loading="lazy" centered size="tiny" circular src={av} />
                       </div>
                     </Grid.Column>
                   ))}
@@ -156,7 +156,7 @@ function EditProfile() {
                         key={key}
                         className="avatarContainer"
                       >
-                        <Image centered size="tiny" circular src={av} />
+                        <Image loading="lazy" centered size="tiny" circular src={av} />
                       </div>
                     </Grid.Column>
                   ))}
