@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
  
@@ -17,10 +17,11 @@ import ConfettiExplosion from "react-confetti-explosion";
 import surpbox from "../../assets/other/surpbox.png";
 import surpboxopen from "../../assets/other/surpboxopen.png";
 import { updateFamiesDay, updateNewFamies } from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 
 function SpinAndWin() {
-  
+  const navigate=useNavigate()
   let userData = useSelector<famReducerState, famReducerState["userData"]>(
     (state) => state.userData
   );
@@ -33,7 +34,11 @@ function SpinAndWin() {
 
   const [isExploding, setIsExploding] = useState(false);
   const dispatch=useDispatch()
-
+  useEffect(()=>{
+      if(userData&&userData.famiesDay===day){
+        navigate('/dashboard')
+      }
+    },[userData])
 
 
     

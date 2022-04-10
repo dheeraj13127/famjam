@@ -1,0 +1,50 @@
+.rewardsSectionContainer{
+    padding: 10px 30px !important;
+}
+.rewardsSectionGrid{
+
+   border-radius: 8px !important;
+   padding: 35px 15px !important;
+   margin-top: 20px !important;
+}
+.rewardCards{
+    background-color: rgb(17, 16, 16);
+   --webkit-box-shadow: 0px 0px 11px 1px rgba(196,196,196,0.51) !important; 
+   box-shadow: 0px 0px 11px 1px rgba(196,196,196,0.51) !important;
+   margin-top: 20px !important;
+   border-radius: 8px !important;
+   padding: 15px !important;
+}
+.rewardsSectionHeader{
+    margin-top: 50px !important;
+}
+.rewardCardHeader{
+    color: white !important;
+    font-family: 'Poppins',sans-serif !important;
+}
+.rewardCardIcon{
+    font-size: 25px !important;
+}
+.rewardCardPrice{
+    color: #5829BB !important;
+}
+.rewardsSectionFamiesCount{
+  
+    background-color: rgb(17, 16, 16);
+    --webkit-box-shadow: 0px 0px 11px 1px rgba(196,196,196,0.51) !important; 
+    box-shadow: 0px 0px 11px 1px rgba(196,196,196,0.51) !important;
+    padding: 10px 10px !important;
+    color: white !important;
+    font-family: 'Poppins',sans-serif !important;
+    border-radius: 10px !important;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .rewardsSectionGrid{
+        padding: 25px 5px !important;
+    }
+    .rewardsSectionHeader{
+        font-size: 15px !important;
+    }
+}

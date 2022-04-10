@@ -127,9 +127,7 @@ function LeftSideBar({
             )}
             {location.pathname === "/dashboard" && (
               <>
-                <Menu.Item link className="dashboardSidebarMenuItem">
-                  <Input placeholder="Search" />
-                </Menu.Item>
+               
                 <Menu.Item
                   link
                   className="dashboardSidebarMenuItem dashboardSidebarFriendMenuItem"

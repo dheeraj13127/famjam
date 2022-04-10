@@ -172,3 +172,11 @@ export type arrivalMessageType={
 export type friendIdType={
   friendId:string
 }
+
+export type rewardsSectionDataType={
+        id:number
+        title:string
+        icon:string
+        color:string
+        price:number
+}

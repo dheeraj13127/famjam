@@ -7,6 +7,7 @@ import famTheatre from '../../../../assets/other/famtheatre.jpg'
 //@ts-ignore
 import fortuneWheel from '../../../../assets/other/fortuneWheel.png'
 
+import pgift from '../../../../assets/other/pgift.png'
 export const featuresData=[
     {
         id:1,
@@ -16,7 +17,7 @@ export const featuresData=[
     },
     {
         id:2,
-        name:"Enjoy a video chat with family in a unique way",
+        name:"Enjoy a video chat with fam friends  in a unique way",
         info:"Let's Go",
         imgUrl:famVideo
     },
@@ -24,7 +25,7 @@ export const featuresData=[
         id:3,
         name:"Win famies daily and convert it to rewards",
         info:"Let's Go",
-        imgUrl:fortuneWheel
+        imgUrl:pgift
     },
     {
         id:4,

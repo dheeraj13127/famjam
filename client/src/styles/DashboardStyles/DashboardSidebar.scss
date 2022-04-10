@@ -12,12 +12,12 @@
     width: 100%;
   }
   .dashboardSidebarLeftMenu{
-      width: 250px !important;
+      width: 260px !important;
     
   }
 
   .dashboardSidebarRightMenu{
-    width: 250px !important;
+    width: 260px !important;
 }
 .dashboardSidebarBox{
   margin-top: -10px !important;
@@ -44,6 +44,10 @@
 }
 .dahsboardSidebarWheelImg{
   height: 20px !important;
+}
+.dahsboardSidebarFamiesImg{
+  height: 20px !important;
+  margin-right: 5px !important;
 }
 .channelsBox{
   display: flex !important;
@@ -97,6 +101,13 @@
   top:20px !important;
   left: 35px !important;
   z-index: 1 !important;
+}
+.famiesButton{
+  display: flex !important;
+  align-items: center !important;
+}
+.friendsBadge{
+  margin-right: 10px !important;
 }
 @media only screen and (max-width: 1700px) {
   .dashboardSidebarLeftMenu{

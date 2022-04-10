@@ -45,7 +45,7 @@ function HeroSection() {
                 Wanna connect to your family and friends in a unique and fun way ?
               </Header>
               <Header as="h3" className="headerSectionInfo">
-                Daily win famies <Icon color="yellow" size="tiny" name="gift" /> and convert it to rewards
+                Daily win famies <Icon color="violet" size="tiny" name="gift" />and convert it to rewards
               </Header>
               <Header as="h3" className="headerSectionInfo">
                 What are you waiting for ? Just the hit the button below

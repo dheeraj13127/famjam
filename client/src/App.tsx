@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {Dashboard, EditProfile, Landing, SignIn, SignUp, VideoCallFriend } from "./components/GlobalExports";
+import {Dashboard, EditProfile, Landing, RewardsSection, SignIn, SignUp, VideoCallFriend } from "./components/GlobalExports";
 
 import "./App.scss";
 
@@ -19,6 +19,7 @@ const [onlineUsers,setOnlineUsers]=useState<any>(null)
         <Route path="/dashboard/*" element={<Dashboard onlineUsers={onlineUsers} setOnlineUsers={setOnlineUsers}/>}/>
         <Route path="/editProfile" element={<EditProfile/>}/>
         <Route path="/videoCall/:id" element={<VideoCallFriend onlineUsers={onlineUsers} setOnlineUsers={setOnlineUsers}/>}/>
+        <Route path="/redeem" element={<RewardsSection/>}/>
       </Routes>
     </Router>
   );
