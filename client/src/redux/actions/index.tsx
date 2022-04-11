@@ -396,7 +396,7 @@ export const updateFamiesDay =
     }
     await axios.put(`https://famjams.herokuapp.com/auth/updateFamies/${userId}`,data)
     .then(async(res)=>{
-      await axios.put(`http://localhost:7000/auth/updateFamTags/${userId}`,newData)
+      await axios.put(`https://famjams.herokuapp.com/auth/updateFamTags/${userId}`,newData)
       .then(resp=>{
         
         toast.success("Successfully purchased")
