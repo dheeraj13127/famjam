@@ -99,7 +99,8 @@ export type rightSidebarType = {
     famRequestsSent: string[];
     firstSignUp: boolean;
     _id: string;
-    famiesDay:number
+    famiesDay:number,
+    famTags:any
   };
   rightVisible: boolean;
   closeRightSidebar:()=>void

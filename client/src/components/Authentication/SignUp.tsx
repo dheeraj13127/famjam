@@ -48,7 +48,8 @@ function SignUp() {
       famRequestsReceived:[],
       famRequestsSent:[],
       firstSignUp:false,
-      famiesDay:day
+      famiesDay:day,
+      famTags:[]
     }
     dispatch(userSignUp(newUser,navigate))
   }

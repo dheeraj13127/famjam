@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import RewardsSectionNavbar from "./RewardsSectionNavbar/RewardsSectionNavbar";
-import { getUserProfile } from "../../redux/actions";
+import { getUserProfile, updateFamiesForRedeem } from "../../redux/actions";
 import { famReducerState } from "../../redux/reducers";
 import {
   Header,
@@ -13,7 +13,7 @@ import {
   Button,
   Icon,
 } from "semantic-ui-react";
-import { Toaster } from "react-hot-toast";
+import toast,{ Toaster } from "react-hot-toast";
 import "../../styles/RewardsSectionStyles/RewardsSection.scss";
 import { rewardsSectionData } from "./RewardsSectionData/RewardsSectionData";
 import { rewardsSectionDataType } from "../../redux/actionTypes/types";
@@ -40,6 +40,30 @@ function RewardsSection() {
   let userData = useSelector<famReducerState, famReducerState["userData"]>(
     (state) => state.userData
   );
+    let userFamies=userData&&userData.famies
+  const redeemFamTags=(price:number,rd:rewardsSectionDataType)=>{
+   if(price>userFamies){
+     toast("Insufficient Famies",{
+      icon:"🙁"
+     })
+   }
+   else{
+     let updatedFamies=userFamies-price;
+     dispatch(updateFamiesForRedeem(famJamUserId,updatedFamies,rd))
+   }
+ 
+  
+  }
+  let newDat=[0]
+  userData&&userData.famTags.forEach((ud:rewardsSectionDataType)=>{
+    newDat.push(ud.id)
+  })
+  const updateRedeemDisabled=(id:any)=>{
+    let res=newDat.includes(id)
+    return res
+  }
+ 
+
   return (
     <>
       <RewardsSectionNavbar />
@@ -56,17 +80,20 @@ function RewardsSection() {
                 <Header
                   className="rewardsSectionFamiesCount"
                   as="h3"
-                  color="black"
+                  
                 >
                   Famies Available&nbsp;&nbsp;
-                  <Button basic color="grey">
+                  <Button>
                     {userData && userData.famies}
                   </Button>
                 </Header>
               </Grid.Row>
               <Grid.Row centered stretched>
-                {rewardsSectionData.map(
+                
+                {
+                rewardsSectionData.map(
                   (rd: rewardsSectionDataType, key: any) => (
+
                     <Grid.Column key={key} textAlign="center" computer={4} tablet={5} mobile={10}>
                       <div className="rewardCards">
                         <Header className="rewardCardHeader" as="h4">
@@ -83,7 +110,8 @@ function RewardsSection() {
                           {rd.price}
                         </Button>
                         <p></p>
-                        <Button color="violet" fluid>Redeem</Button>
+                       
+                        <Button disabled={updateRedeemDisabled(rd.id)} color="violet" onClick={()=>redeemFamTags(rd.price,rd)} fluid>{updateRedeemDisabled(rd.id)?"Redeemed":"Redeem"}</Button>
                       </div>
                     </Grid.Column>
                   )

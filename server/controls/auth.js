@@ -59,7 +59,8 @@ exports.googleSignUp = async (req, res) => {
                 famRequestsReceived: [],
                 famRequestsSent: [],
                 firstSignUp: false,
-                famiesDay:day
+                famiesDay:day,
+                famTags:[]
               });
               newUser.save((err, data) => {
                 if (err) {
@@ -384,6 +385,29 @@ exports.updateFamiesDay=async(req,res)=>{
       famiesDay:req.body.newDay
         
     },{returnDocument:true,new:true},(err,result)=>{
+      if(err){
+        return res.status(400).json(err)
+      
+      }
+      else{
+       return res.status(200).json(result)
+      }
+    })
+    
+  }
+  catch(e){
+    // res.status(500).json({ success: false, message: "Something went wrong !" });
+  }
+}
+
+exports.updateFamTags=async(req,res)=>{
+ 
+  try{
+    await User.findOneAndUpdate({_id:req.params.userId},{
+      $push:{
+        famTags:req.body.rdData
+      }
+    },{upsert:true,returnDocument:true,new:true},(err,result)=>{
       if(err){
         return res.status(400).json(err)
       

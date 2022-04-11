@@ -57,6 +57,10 @@ const userSchema = new mongoose.Schema({
     type:Number,
     required:true
   },
+  famTags:{
+    type:Array,
+    required:true
+  },
   createdDate: {
     type: Date,
     default: Date.now,

@@ -94,14 +94,14 @@ export const rewardsSectionData=[
         id:14,
         title:"Fam Gaurd",
         icon:"💂🏼",
-        color:"violet",
+        color:"yellow",
         price:700
     },
     {
         id:15,
         title:"Fam Magician",
         icon:"🤹🏼",
-        color:"teal",
+        color:"yellow",
         price:250
     },
     {
@@ -136,7 +136,7 @@ export const rewardsSectionData=[
         id:20,
         title:"Fam Writer",
         icon:"🖋",
-        color:"olive",
+        color:"orange",
         price:500
     },
     

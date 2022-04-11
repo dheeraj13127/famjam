@@ -23,7 +23,7 @@ export const featuresData=[
     },
     {
         id:3,
-        name:"Win famies daily and convert it to rewards",
+        name:"Win famies daily and convert it to cool famtags",
         info:"Let's Go",
         imgUrl:pgift
     },

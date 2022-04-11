@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import surpbox from "../../../../assets/other/surpbox.png";
 import { motion } from "framer-motion";
-import { rightSidebarType } from "../../../../redux/actionTypes/types";
+import { rewardsSectionDataType, rightSidebarType } from "../../../../redux/actionTypes/types";
 import { userSignout } from "../../../../redux/actions";
 import randomUser from "../../../../assets/other/randomUser.png";
 
@@ -37,7 +37,36 @@ function RightSideBar(props: rightSidebarType) {
       document.removeEventListener("click", handleClickOutside, true);
     };
   }, [props.closeRightSidebar]);
-  const [showTags, setShowTags] = useState(false);
+  const validateFamtagsColors=(id:any)=>{
+    if(id==="teal"){
+      return "teal"
+    }
+    else if(id==="green"){
+      return "green"
+    }
+    else if(id==="orange"){
+      return "orange"
+    }
+    else if(id==="yellow"){
+      return "yellow"
+    }
+    else if(id==="brown"){
+      return "brown"
+    }
+    else if(id==="olive"){
+      return "olive"
+    }
+    else if(id==="purple"){
+      return "purple"
+    }
+    else if(id==="violet"){
+      return "violet"
+    }
+    else{
+      return "pink"
+    }
+  }
+
   return (
     <div ref={rightRef}>
       <Sidebar
@@ -76,16 +105,14 @@ function RightSideBar(props: rightSidebarType) {
                 </Button>
               </a>
             </Menu.Item>
+            {
+              props.userData&&props.userData.famTags.map((ft:rewardsSectionDataType,key:any)=>(
+                <Popup key={key} size="mini"  content={ft.title} trigger={<Label className="friendsBadge" content={ft.icon} tag color={validateFamtagsColors(ft.color)}/>}/>
+              ))
+            }
 
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="teal"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="green"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="orange"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="yellow"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="brown"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="olive"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="purple"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="violet"/>}/>
-            <Popup size="mini"  content="Entertainer" trigger={<Label className="friendsBadge" content=" 🧑🏻‍🎤" tag color="pink"/>}/>
+            
+          
 
             <Divider inverted />
             <Menu.Item link className="dashboardSidebarMenuItem">

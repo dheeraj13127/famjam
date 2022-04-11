@@ -18,6 +18,7 @@ import {
   famFriendsType,
   googleSignUpType,
   OwnUserDataType,
+  rewardsSectionDataType,
   signInType,
   signUpType,
 } from "../actionTypes/types";
@@ -383,3 +384,31 @@ export const updateFamiesDay =
       payload:users
     })
   }
+  
+  export const updateFamiesForRedeem =
+  (userId: any, newFamies: number,rd:rewardsSectionDataType) => async (dispatch: any) => {
+   
+    const data = {
+      newFamies: newFamies,
+    };
+    const newData={
+      rdData:rd
+    }
+    await axios.put(`https://famjams.herokuapp.com/auth/updateFamies/${userId}`,data)
+    .then(async(res)=>{
+      await axios.put(`http://localhost:7000/auth/updateFamTags/${userId}`,newData)
+      .then(resp=>{
+        
+        toast.success("Successfully purchased")
+        setTimeout(()=>{
+          window.location.reload()
+        },2000)
+      })
+      .catch(err=>{
+        toast.error("Something went wrong !")
+      })
+    })
+    .catch(err=>{
+      toast.error("Something went wrong !")
+    })
+  };
