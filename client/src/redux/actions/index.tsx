@@ -359,7 +359,7 @@ export const updateFamiesDay =
       .then((res) => {
         setTimeout(() => {
           window.location.pathname = "/dashboard";
-        }, 6500);
+        }, 5500);
       })
       .catch((err) => {
         toast.error("Something went wrong !");

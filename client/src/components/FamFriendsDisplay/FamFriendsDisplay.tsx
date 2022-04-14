@@ -9,8 +9,9 @@ import {
   Label,
   Loader,
   Message,
+  Popup,
 } from "semantic-ui-react";
-import { famFriendsType } from "../../redux/actionTypes/types";
+import { famFriendsType, rewardsSectionDataType } from "../../redux/actionTypes/types";
 import { famReducerState } from "../../redux/reducers";
 import "../../styles/FamFriendsDisplayStyles/FamFriendsDisplay.scss";
 function FamFriendsDisplay() {
@@ -21,6 +22,35 @@ function FamFriendsDisplay() {
     famReducerState,
     famReducerState["famFriendsData"]
   >((state) => state.famFriendsData);
+  const validateFamtagsColors=(id:any)=>{
+    if(id==="teal"){
+      return "teal"
+    }
+    else if(id==="green"){
+      return "green"
+    }
+    else if(id==="orange"){
+      return "orange"
+    }
+    else if(id==="yellow"){
+      return "yellow"
+    }
+    else if(id==="brown"){
+      return "brown"
+    }
+    else if(id==="olive"){
+      return "olive"
+    }
+    else if(id==="purple"){
+      return "purple"
+    }
+    else if(id==="violet"){
+      return "violet"
+    }
+    else{
+      return "pink"
+    }
+  }
 
   return (
     <div className="famFriendsDisplayContainer">
@@ -49,7 +79,7 @@ function FamFriendsDisplay() {
                     <Label as="a" color="red" ribbon>
                       Your Fam Friends
                     </Label>
-                    {famFriendsData.map((fr: famFriendsType, key: any) => (
+                    {famFriendsData&&famFriendsData.map((fr: famFriendsType, key: any) => (
                       <Message key={key} color="black">
                         <Image
                           
@@ -61,15 +91,11 @@ function FamFriendsDisplay() {
                           {fr && fr.userName}
                         </Message.Header>
                         <div className="friendsBadgeContainer">
-                        <Label as="a" className="friendsBadge" color="teal" tag>
-                          Featured
-                        </Label>
-                        <Label as="a" className="friendsBadge" color="teal" tag>
-                          Featured
-                        </Label>
-                        <Label as="a" className="friendsBadge" color="teal" tag>
-                          Featured
-                        </Label>
+                        {
+                fr&&fr.famTags.map((ft:rewardsSectionDataType,key:any)=>(
+                <Popup key={key} size="mini"  content={ft.title} trigger={<Label className="friendsBadge" content={ft.icon} tag color={validateFamtagsColors(ft.color)}/>}/>
+              ))
+            }
                         </div>
                        
                         <Button  className="friendRemoveButton">

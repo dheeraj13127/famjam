@@ -20,17 +20,7 @@ export const FriendVideoPlayer: React.FC<{
   return (
     <div>
       <video autoPlay playsInline ref={friendVideo} className="videoPlayer" />
-      {/* {stream.getTracks()[1].enabled===false && (
-        <div className="offVideoImageBox">
-          <Image
-            circular
-            centered
-            size="small"
-            src={friendData && friendData.user.profilePicUrl}
-            className="offVideoImage"
-          />
-        </div>
-      )} */}
+     
     </div>
   );
 };

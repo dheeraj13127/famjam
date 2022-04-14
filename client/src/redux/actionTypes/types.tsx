@@ -151,6 +151,7 @@ export type famFriendsType = {
   famRequestsSent: string[];
   firstSignUp: boolean;
   _id: string;
+  famTags:any
 };
  export type createMessageType={
   conversationId:string,

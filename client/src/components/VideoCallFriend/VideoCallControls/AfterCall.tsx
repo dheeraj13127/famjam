@@ -17,6 +17,7 @@ function AfterCall({ leaveCall, mute, setMute, stream,setOffVideo,offVideo }: af
   const onLeaveCall = () => {
     leaveCall();
   };
+
   return (
     <div>
       <Header textAlign="center" as="h4">
@@ -72,6 +73,7 @@ function AfterCall({ leaveCall, mute, setMute, stream,setOffVideo,offVideo }: af
               <MdVideocam className="afterCallIcons" />
             </Button>
           )}
+          
         </Message>
       </Header>
     </div>

@@ -109,6 +109,15 @@
 .friendsBadge{
   margin-right: 10px !important;
 }
+.famZoneButton{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.famZoneIcon{
+  margin-left: 10px !important;
+  font-size: 15px !important;
+}
 @media only screen and (max-width: 1700px) {
   .dashboardSidebarLeftMenu{
     width: 205px !important;

@@ -6,7 +6,7 @@ import famVideo from '../../../../assets/other/videoChat.png'
 import famTheatre from '../../../../assets/other/famtheatre.jpg'
 //@ts-ignore
 import fortuneWheel from '../../../../assets/other/fortuneWheel.png'
-
+//@ts-ignore
 import pgift from '../../../../assets/other/pgift.png'
 export const featuresData=[
     {
@@ -29,7 +29,7 @@ export const featuresData=[
     },
     {
         id:4,
-        name:"Enjoy a very new theatrical experience with your family",
+        name:"Experience Fam-Zone  with your friends",
         info:"Let's Go",
         imgUrl:famTheatre
     },

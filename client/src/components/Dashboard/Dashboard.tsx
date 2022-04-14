@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getConversations, getUserProfile } from "../../redux/actions";
 import { Toaster } from "react-hot-toast";
 import { famReducerState } from "../../redux/reducers";
-import { AddFamFriend, ChatComponent, FamFriendRequest, SpinAndWin } from "../GlobalExports";
+import { AddFamFriend, ChatComponent, CreateFamZone, FamFriendRequest, SpinAndWin } from "../GlobalExports";
 import FamFriendsDisplay from "../FamFriendsDisplay/FamFriendsDisplay";
 
 type dashboardType={
@@ -55,6 +55,7 @@ function Dashboard({setOnlineUsers,onlineUsers}:dashboardType) {
           <Route path="/famFriendRequest" element={<FamFriendRequest/>}/>
           <Route path="/hitAndWin" element={<SpinAndWin/>}/>
           <Route path="/famFriends" element={<FamFriendsDisplay/>}/>
+          <Route path="/createFamZone" element={<CreateFamZone/>}/>
         </Routes>
       </DashboardSideBar>
       

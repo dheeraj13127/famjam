@@ -2,15 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   Menu,
   Sidebar,
-  Input,
+  
   Divider,
   Button,
   Icon,
   Image,
-  Label,
+  
 } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-
+import {ImFilm} from 'react-icons/im'
 import {
   famFriendsType,
   leftSidebarType,
@@ -132,31 +132,23 @@ function LeftSideBar({
                   link
                   className="dashboardSidebarMenuItem dashboardSidebarFriendMenuItem"
                 >
-                  <Button color="blue" fluid>
-                    Channels
+                  <Button className="famZoneButton" color="purple" fluid>
+                    Fam Zone <ImFilm className="famZoneIcon"/>
                   </Button>
-                  <Button
-                    color="grey"
-                    basic
-                    className="dahboardSidebarAddChannelBtn"
-                  >
-                    <Icon name="add" />
-                    Add Channel
-                  </Button>
+                  <a href="/dashboard/createFamZone">
+                    <Button
+                      color="grey"
+                      basic
+                      className="dahboardSidebarAddChannelBtn"
+                    >
+                      <Icon name="add" />
+                      New Fam Zone
+                    </Button>
+                  </a>
                 </Menu.Item>
+                
                 <Divider inverted />
-                <Menu.Item link>
-                  <Button color="grey" fluid>
-                    # Channel1
-                  </Button>
-                </Menu.Item>
-                <Menu.Item link>
-                  <Button color="grey" fluid>
-                    # Channel2
-                  </Button>
-                </Menu.Item>
-                <Divider inverted />
-                <Divider inverted />
+                
                 <Menu.Item
                   link
                   className="dashboardSidebarMenuItem dashboardSidebarFriendMenuItem"
@@ -175,7 +167,7 @@ function LeftSideBar({
                     </Button>
                   </a>
                 </Menu.Item>
-                <Divider inverted />
+                
                 {famFriendsData &&
                   famFriendsData.map((fr: famFriendsType, key: any) => (
                     
