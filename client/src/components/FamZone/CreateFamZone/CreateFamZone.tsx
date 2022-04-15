@@ -15,7 +15,7 @@ function CreateFamZone() {
     famReducerState,
     famReducerState["famFriendsData"]
   >((state) => state.famFriendsData);
-
+  const [famZoneName,setFamZoneName]=useState("")
   const [selectedFriends,setSelectedFriends]=useState<any>([])
   const [selectedFamZoneIcon,setSelectedFamZoneIcon]=useState<string>("")
   const onSelectFriends=(id:any)=>{
@@ -28,12 +28,35 @@ function CreateFamZone() {
     }
    
   }
+  const onFamZoneNameChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+      setFamZoneName(e.target.value)
+  }
   const selectedFriend=(id:any)=>{
     let res=selectedFriends.includes(id)
     return res
   }
   const removeFriend=(id:any)=>{
     setSelectedFriends(selectedFriends.filter((frd:any)=>frd!==id))
+  }
+  const onCreateFamZone=()=>{
+    if(famZoneName===""){
+      toast("Give a name to your famzone",{
+        icon:"👇"
+      })
+    }
+    else if(selectedFamZoneIcon===""){
+      toast("Select the icon for your famzone",{
+        icon:"👇"
+      })
+    }
+    else if(selectedFriends.length===0){
+      toast("You need to select atleast 1 friend",{
+        icon:"👇"
+      })
+    }
+    else{
+
+    }
   }
  
   return (
@@ -43,7 +66,7 @@ function CreateFamZone() {
           <Grid.Column
             computer={10}
             largeScreen={7}
-            widescreen={12}
+            widescreen={11}
             mobile={16}
             tablet={12}
           >
@@ -64,7 +87,7 @@ function CreateFamZone() {
                       Create one and chill there!
                     </Label>
                    <div className="createFamZoneForm">
-                   <Input icon="users" className="createFamZoneInputs" iconPosition='left' fluid  placeholder="Enter Fam Zone name"/>
+                   <Input onChange={onFamZoneNameChange} icon="users" className="createFamZoneInputs" iconPosition='left' fluid  placeholder="Enter Fam Zone name"/>
                    <Message color='black' content={selectedFamZoneIcon===""?"Select your Fam Zone Icon":`You have choosen ${selectedFamZoneIcon}`} className='famZoneFriendLabelInfo'/>
                    {
                      famZoneIconData.map((fz:famZoneIconType)=>(
@@ -73,7 +96,7 @@ function CreateFamZone() {
                         </Label>
                      ))
                    }
-                   <Message color='purple' content="Select maximum upto 4 friends" className='famZoneFriendLabelInfo'/>
+                   <Message color='black' content="Select maximum upto 4 friends" className='famZoneFriendLabelInfo'/>
                   
                     {
                       famFriendsData&&famFriendsData.map((fr:famFriendsType,key:number)=>(
@@ -95,8 +118,13 @@ function CreateFamZone() {
                       
                       ))
                     }
+                   {
+                     famFriendsData&&famFriendsData.length===0&&(
+                    <Message className='createFamZoneNoFriends' color='purple'>You don't have any fam friends yet.</Message>
+                     )
+                   } 
                     <Header textAlign='center'>
-                        <Button>Create</Button>
+                        <Button onClick={onCreateFamZone}>Create</Button>
                       </Header>
                    </div>
                   </div>

@@ -51,7 +51,7 @@ function AddFamFriend() {
         
             computer={10}
             largeScreen={11}
-            widescreen={12}
+            widescreen={11}
             mobile={16}
             tablet={16}
             

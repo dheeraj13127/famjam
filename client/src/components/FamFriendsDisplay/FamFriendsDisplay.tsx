@@ -59,7 +59,7 @@ function FamFriendsDisplay() {
           <Grid.Column
             computer={10}
             largeScreen={11}
-            widescreen={12}
+            widescreen={11}
             mobile={15}
             tablet={16}
           >
@@ -79,7 +79,9 @@ function FamFriendsDisplay() {
                     <Label as="a" color="red" ribbon>
                       Your Fam Friends
                     </Label>
-                    {famFriendsData&&famFriendsData.map((fr: famFriendsType, key: any) => (
+                    {famFriendsData.length===0?(
+                      <Message className="famfriendsDisplayNoFriends" color="purple">You don't have any fam friends yet.</Message>
+                    ):(famFriendsData.map((fr: famFriendsType, key: any) => (
                       <Message key={key} color="black">
                         <Image
                           
@@ -94,7 +96,7 @@ function FamFriendsDisplay() {
                         {
                 fr&&fr.famTags.map((ft:rewardsSectionDataType,key:any)=>(
                 <Popup key={key} size="mini"  content={ft.title} trigger={<Label className="friendsBadge" content={ft.icon} tag color={validateFamtagsColors(ft.color)}/>}/>
-              ))
+              ))  
             }
                         </div>
                        
@@ -102,7 +104,7 @@ function FamFriendsDisplay() {
                           Remove friend
                         </Button>
                       </Message>
-                    ))}
+                    )))}
                   </div>
                 </>
               ) : (
