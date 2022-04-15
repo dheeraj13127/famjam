@@ -68,7 +68,7 @@ function CreateFamZone() {
                    <Message color='black' content={selectedFamZoneIcon===""?"Select your Fam Zone Icon":`You have choosen ${selectedFamZoneIcon}`} className='famZoneFriendLabelInfo'/>
                    {
                      famZoneIconData.map((fz:famZoneIconType)=>(
-                        <Label className='famZoneIcon' circular key={fz.id} color="grey" onClick={()=>setSelectedFamZoneIcon(fz.icon)} >
+                        <Label className='famZoneIcons' circular key={fz.id} color="grey" onClick={()=>setSelectedFamZoneIcon(fz.icon)} >
                           {fz.icon}
                         </Label>
                      ))
