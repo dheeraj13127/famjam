@@ -16,7 +16,7 @@ function ViewFamJam() {
           
             <Embed
                 active={true}
-                id="_phRL9VUEzA"
+                id=""
                 source="youtube"
                 className="viewFamJamEmbed"
             />
