@@ -43,6 +43,7 @@ export type userDataType = {
     famRequestsSent: string[];
     firstSignUp: boolean;
     _id: string;
+    famZones:string[];
   };
 };
 export type OwnUserDataType = {
@@ -181,4 +182,12 @@ export type rewardsSectionDataType={
         icon:string
         color:string
         price:number
+}
+
+export type myFamZonesDataType={
+  _id:string
+  famZoneName:string
+  famZoneMembers:string[]
+  famZoneIcon:string
+  famZoneAdmin:string
 }

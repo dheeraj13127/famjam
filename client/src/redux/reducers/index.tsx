@@ -1,6 +1,6 @@
 import { actionType } from '../actions'
 import { famFriendsType } from '../actionTypes/types'
-import { GOOGLE_SIGNUP_SUCCESS,GOOGLE_SIGNIN_SUCCESS,SIGNUP_SUCCESS,SIGNIN_SUCCESS, GET_USER_PROFILE, GET_FAM_FRIENDS, GET_CONVERSATIONS, SET_CURRENT_CONVERSATIONS, CURRENT_FRIEND_MESSAGE, GET_CURRENT_CONVERSATION_ID, GET_INDIVIDUAL_CONVERSATION, GET_VIDEOCALL_FRIEND_PROFILE, GET_ONLINE_USERS } from '../constants/constants'
+import { GOOGLE_SIGNUP_SUCCESS,GOOGLE_SIGNIN_SUCCESS,SIGNUP_SUCCESS,SIGNIN_SUCCESS, GET_USER_PROFILE, GET_FAM_FRIENDS, GET_CONVERSATIONS, SET_CURRENT_CONVERSATIONS, CURRENT_FRIEND_MESSAGE, GET_CURRENT_CONVERSATION_ID, GET_INDIVIDUAL_CONVERSATION, GET_VIDEOCALL_FRIEND_PROFILE, GET_ONLINE_USERS, GET_MY_FAMZONES, GET_INDIVIDUAL_FAMZONE, GET_PARTICULAR_FAMZONE_MEMBERS } from '../constants/constants'
 export interface famReducerState{
     googleSignUpId:string,
     googleSignInId:string,
@@ -14,7 +14,10 @@ export interface famReducerState{
     currentConversationId:string
     conversationData:any,
     videoCallFriendData:any
-    onlUsers:any
+    onlUsers:any,
+    myFamZonesData:any,
+    individualFamZoneData:any,
+    particularFamZoneMembers:any
 }
 
 const initState={
@@ -31,7 +34,10 @@ const initState={
     currentConversationId:"",
     conversationData:null,
     videoCallFriendData:null,
-    onlUsers:null
+    onlUsers:null,
+    myFamZonesData:null,
+    individualFamZoneData:null,
+    particularFamZoneMembers:null
 }
 
 export const famReducer=(state:famReducerState=initState,action:actionType)=>{
@@ -111,6 +117,24 @@ export const famReducer=(state:famReducerState=initState,action:actionType)=>{
         case GET_ONLINE_USERS:{
             return Object.assign({},state,{
                 onlUsers:action.payload,
+          
+              })
+        }
+        case GET_MY_FAMZONES:{
+            return Object.assign({},state,{
+                myFamZonesData:action.payload,
+          
+              })
+        }
+        case GET_INDIVIDUAL_FAMZONE:{
+            return Object.assign({},state,{
+                individualFamZoneData:action.payload,
+          
+              })
+        }
+        case GET_PARTICULAR_FAMZONE_MEMBERS:{
+            return Object.assign({},state,{
+                particularFamZoneMembers:action.payload,
           
               })
         }

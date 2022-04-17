@@ -12,6 +12,10 @@ const FamZoneSchema = new mongoose.Schema({
     famZoneIcon:{
         type:String,
         required:true
+    },
+    famZoneAdmin:{
+        type:String,
+        required:true
     }
   
 },

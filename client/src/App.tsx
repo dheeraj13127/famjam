@@ -22,6 +22,7 @@ const [onlineUsers,setOnlineUsers]=useState<any>(null)
         <Route path="/redeem" element={<RewardsSection/>}/>
         <Route path="/famZone/:id" element={<FamZone/>}/>
       </Routes>
+      
     </Router>
   );
 }

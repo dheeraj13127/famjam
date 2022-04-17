@@ -60,7 +60,8 @@ exports.googleSignUp = async (req, res) => {
                 famRequestsSent: [],
                 firstSignUp: false,
                 famiesDay:day,
-                famTags:[]
+                famTags:[],
+                famZones:[]
               });
               newUser.save((err, data) => {
                 if (err) {

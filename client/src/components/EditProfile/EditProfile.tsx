@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { avatarset2 } from "../../assets/avatars/AvatarSet2";
 import { avatarset3 } from "../../assets/avatars/AvatarSet3";
 import EditProfileNavbar from "./EditProfileNavbar/EditProfileNavbar";
-import { profile } from "console";
+
 import { Toaster } from "react-hot-toast";
 function EditProfile() {
   const dispatch = useDispatch();

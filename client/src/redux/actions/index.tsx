@@ -5,7 +5,10 @@ import {
   GET_CURRENT_CONVERSATION_ID,
   GET_FAM_FRIENDS,
   GET_INDIVIDUAL_CONVERSATION,
+  GET_INDIVIDUAL_FAMZONE,
+  GET_MY_FAMZONES,
   GET_ONLINE_USERS,
+  GET_PARTICULAR_FAMZONE_MEMBERS,
   GET_USER_PROFILE,
   GET_VIDEOCALL_FRIEND_PROFILE,
   GOOGLE_SIGNUP_SUCCESS,
@@ -412,3 +415,67 @@ export const updateFamiesDay =
       toast.error("Something went wrong !")
     })
   };
+
+  export const createNewFamZone=(userId:any,famZoneData:any)=>async(dispatch:any)=>{
+    await axios
+    .post("https://famjams.herokuapp.com/auth/createNewFamZone",famZoneData)
+    .then(async(res)=>{
+     let data={
+       createdFamZoneData:res.data,
+       userId:userId
+     }
+      await axios.post("https://famjams.herokuapp.com/auth/updateFamZoneDetailsInUsers",data)
+      .then(resp=>{
+        toast.success("Successfully created")
+        setTimeout(()=>{
+          window.location.pathname = "/dashboard";
+        },1500)
+      })
+      .catch(errs=>{
+        toast.error("Something went wrong !")
+      })
+    })
+    .catch(err=>toast.error("Something went wrong !"))
+  }
+
+  export const getMyFamZones=(userId:any)=>async(dispatch:any)=>{
+    await axios
+    .get(`https://famjams.herokuapp.com/auth/getFamZones/${userId}`)
+    .then(res=>{
+     
+      dispatch({
+        type: GET_MY_FAMZONES,
+          payload: res.data,
+      })
+      
+    })
+    .catch(err=>toast.error("Something went wrong !"))
+  }
+  export const getIndividualFamZone=(famZoneId:any)=>async(dispatch:any)=>{
+    await axios
+    .get(`https://famjams.herokuapp.com/auth/getIndividualFamZone/${famZoneId}`)
+    .then(res=>{
+     
+      dispatch({
+        type: GET_INDIVIDUAL_FAMZONE,
+          payload: res.data[0],
+      })
+      
+    })
+    .catch(err=>toast.error("Something went wrong !"))
+  }
+
+
+  export const getParticularFamZoneMembers=(famZoneId:any)=>async(dispatch:any)=>{
+    await axios
+    .get(`https://famjams.herokuapp.com/auth/getParticularFamZoneMembers/${famZoneId}`)
+    .then(res=>{
+     
+      dispatch({
+        type: GET_PARTICULAR_FAMZONE_MEMBERS,
+          payload: res.data,
+      })
+      
+    })
+    .catch(err=>toast.error("Something went wrong !"))
+  }

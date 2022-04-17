@@ -61,6 +61,10 @@ const userSchema = new mongoose.Schema({
     type:Array,
     required:true
   },
+  famZones:{
+    type:Array,
+    required:true
+  },
   createdDate: {
     type: Date,
     default: Date.now,

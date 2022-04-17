@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
-import { Button, Checkbox, Dimmer, Dropdown, Grid, Header, Image, Input, Label, Loader, Message } from 'semantic-ui-react'
+import { useSelector,useDispatch } from 'react-redux';
+import { Button, Dimmer, Grid, Header, Image, Input, Label, Loader, Message } from 'semantic-ui-react'
 import { famFriendsType } from '../../../redux/actionTypes/types';
 import { famReducerState } from '../../../redux/reducers';
 import '../../../styles/FamZoneStyles/CreateFamZone.scss'
 import toast from 'react-hot-toast'
 import { famZoneIconData, famZoneIconType } from './FamZoneIconData/FamZoneIconData';
+import { createNewFamZone } from '../../../redux/actions';
 function CreateFamZone() {
-
+  let famJamUserId = sessionStorage.getItem("famJamUserId");
   let userData = useSelector<famReducerState, famReducerState["userData"]>(
     (state) => state.userData
   );
+  const dispatch=useDispatch()
   const famFriendsData = useSelector<
     famReducerState,
     famReducerState["famFriendsData"]
@@ -20,8 +22,8 @@ function CreateFamZone() {
   const [selectedFamZoneIcon,setSelectedFamZoneIcon]=useState<string>("")
   const onSelectFriends=(id:any)=>{
    
-    if(selectedFriends.length>3){
-      toast.error("Maximum upto 4 can be selected")
+    if(selectedFriends.length>2){
+      toast.error("Maximum upto 3 can be selected")
     }
     else{
       setSelectedFriends((newId:any)=>[...newId,id])
@@ -49,13 +51,21 @@ function CreateFamZone() {
         icon:"👇"
       })
     }
-    else if(selectedFriends.length===0){
-      toast("You need to select atleast 1 friend",{
+    else if(selectedFriends.length!==3){
+      toast("You need to select 3 friends",{
         icon:"👇"
       })
     }
     else{
-
+      selectedFriends.push(famJamUserId)
+      let famZoneData={
+        famZoneMembers:selectedFriends,
+        famZoneName:famZoneName,
+        famZoneIcon:selectedFamZoneIcon,
+        famZoneAdmin:famJamUserId
+      }
+      
+      dispatch(createNewFamZone(famJamUserId,famZoneData))
     }
   }
  
@@ -96,7 +106,7 @@ function CreateFamZone() {
                         </Label>
                      ))
                    }
-                   <Message color='black' content="Select maximum upto 4 friends" className='famZoneFriendLabelInfo'/>
+                   <Message color='black' content="Select maximum of 3 friends" className='famZoneFriendLabelInfo'/>
                   
                     {
                       famFriendsData&&famFriendsData.map((fr:famFriendsType,key:number)=>(

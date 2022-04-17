@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HeroSection, Navbar,FeaturesSection, ViewFamJam,Footer } from ".";
 import "../../styles/LandingStyles/Landing.scss";
-
+import MouseParticles from 'react-mouse-particles'
 function Landing() {
   const [toggle, setToggle] = useState(false);
   const toggleMenu = () => {
@@ -21,6 +21,7 @@ function Landing() {
         </div>
     
       <Footer/>
+      <MouseParticles g={1} color="random" cull="col,image-wrapper"/>
     </div>
   );
 }
