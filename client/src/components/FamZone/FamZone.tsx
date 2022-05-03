@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Toaster } from 'react-hot-toast'
+import toast,{ Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Dimmer, Grid, Header, Icon, Image, Label, Loader, Message } from 'semantic-ui-react'
@@ -30,6 +30,7 @@ function FamZone() {
     dispatch(getFamFriends(famJamUserId));
     dispatch(getParticularFamZoneMembers(id))
   }, []);
+
   useEffect(() => {
     
     socket.current = io("https://famjams.herokuapp.com");
@@ -37,10 +38,10 @@ function FamZone() {
     socket.current.on("me",(id:any)=>{
       setYourID(id)
     })
-   
+
     socket.current.emit("addUser",famJamUserId)
     socket.current.on("getUsers",(users:any)=>{
- 
+      
       dispatch(getOnlineUsers(users))
    
     })
@@ -75,7 +76,12 @@ function FamZone() {
   
 }
   const currentFamZoneMembers=useSelector<famReducerState,famReducerState["particularFamZoneMembers"]>(state=>state.particularFamZoneMembers)
- 
+ const onNavigateToFamTube=()=>{
+  toast("Under development", {
+    icon: "⏳",
+  });
+  //  window.location.href=`/famZone/${id}/famTube`
+ }
   return (
     
     <>
@@ -126,7 +132,7 @@ function FamZone() {
                  <div className="famTubeCol">
                  <div className="famTubeBox">
                    <Header className='famTubeHeader'>Enjoy the FamZones very own feature FamTube</Header>
-                  <Button className='famTubeButton'>FamTube</Button>
+                  <Button className='famTubeButton' onClick={onNavigateToFamTube}>FamTube</Button>
                 </div>
                  </div>
               

@@ -55,7 +55,25 @@ function NewMessageInput({
       setNewMessages("");
     }
   };
-const navigate=useNavigate()
+
+const handleOnEnter=(e:any)=>{
+  
+  if (newMessages !== "") {
+    const newMessage = {
+      conversationId: conversationId,
+      sender: famJamUserId,
+      text: newMessages,
+    };
+    dispatch(createNewMessage(newMessage, setMessage, message));
+    socket.current.emit("sendMessage", {
+      senderId: famJamUserId,
+      receiverId: friend._id,
+      text: newMessage,
+    });
+
+    setNewMessages("");
+  }
+}
   return (
     <>
      
@@ -71,6 +89,7 @@ const navigate=useNavigate()
       <InputEmoji
         value={newMessages}
         onChange={setNewMessages}
+        onEnter={handleOnEnter}
         cleanOnEnter
         placeholder="Type a message"
       />
