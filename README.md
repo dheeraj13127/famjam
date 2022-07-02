@@ -1,2 +1,2 @@
 # famjam
-##Famjam is fun social chatting app.
+## Famjam is fun social chatting app.
