@@ -1,2 +1,2 @@
 # FamJam
-## Famjam is funtasy  chatting app.
+## Famjam is fantasy  chatting app.
