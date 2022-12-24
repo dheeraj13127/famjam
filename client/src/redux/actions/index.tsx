@@ -71,7 +71,7 @@ export const userSignUp =
       icon: "⏳",
     });
     await axios
-      .post("https://famjams.herokuapp.com/auth/signUp", response)
+      .post("https://famjam.onrender.com/auth/signUp", response)
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
@@ -95,7 +95,7 @@ export const userSignIn =
       icon: "⏳",
     });
     await axios
-      .post("https://famjams.herokuapp.com/auth/signIn", response)
+      .post("https://famjam.onrender.com/auth/signIn", response)
       .then((res) => {
         const token = res.data.accessToken;
         const userId = res.data.user._id;
@@ -118,7 +118,7 @@ export const userSignIn =
 
 export const getUserProfile = (resp: any) => async (dispatch: any) => {
   await axios
-    .post("https://famjams.herokuapp.com/auth/getProfile", resp)
+    .post("https://famjam.onrender.com/auth/getProfile", resp)
     .then((res) => {
       dispatch({
         type: GET_USER_PROFILE,
@@ -136,7 +136,7 @@ export const userSignout = (navigate: any) => async (dispatch: any) => {
 
 export const getFamFriends = (userId: any) => async (dispatch: any) => {
   await axios
-    .get(`https://famjams.herokuapp.com/auth/getFamFriends/${userId}`)
+    .get(`https://famjam.onrender.com/auth/getFamFriends/${userId}`)
     .then((res) => {
       dispatch({
         type: GET_FAM_FRIENDS,
@@ -148,7 +148,7 @@ export const getFamFriends = (userId: any) => async (dispatch: any) => {
 export const getConversations =
   (userId: any, setConversations: any) => async (dispatch: any) => {
     await axios
-      .get(`https://famjams.herokuapp.com/auth/getChatConversation/${userId}`)
+      .get(`https://famjam.onrender.com/auth/getChatConversation/${userId}`)
       .then((res) => {
         setConversations(res.data);
         dispatch({
@@ -162,7 +162,7 @@ export const setCurrentConversation =
   (conversationId: string, setMessage: any) => async (dispatch: any) => {
     await axios
       .get(
-        `https://famjams.herokuapp.com/auth/getCreatedMessage/${conversationId}`
+        `https://famjam.onrender.com/auth/getCreatedMessage/${conversationId}`
       )
       .then((res) => {
         setMessage(res.data);
@@ -193,7 +193,7 @@ export const createNewMessage =
   (newMessage: createMessageType, setMessage: any, message: any) =>
   async (dispatch: any) => {
     await axios
-      .post("https://famjams.herokuapp.com/auth/createMessage", newMessage)
+      .post("https://famjam.onrender.com/auth/createMessage", newMessage)
       .then((res) => {
         setMessage([...message, res.data]);
         dispatch({
@@ -223,7 +223,7 @@ export const sendFamFriendRequest =
     };
     // console.log(checkFriendPresent(friendId))
     await axios
-      .get(`https://famjams.herokuapp.com/auth/getFriendProfile/${friendId}`)
+      .get(`https://famjam.onrender.com/auth/getFriendProfile/${friendId}`)
       .then(async (res) => {
         res.data.user.famRequestsReceived.length !== 0 &&
           res.data.user.famRequestsReceived.map((m: any) => {
@@ -235,7 +235,7 @@ export const sendFamFriendRequest =
         if (exists) {
           await axios
             .post(
-              "https://famjams.herokuapp.com/auth/updateFriendRequest",
+              "https://famjam.onrender.com/auth/updateFriendRequest",
               data
             )
             .then((resp) => {
@@ -265,7 +265,7 @@ export const deleteFamFriendRequest =
     };
 
     await axios
-      .post("https://famjams.herokuapp.com/auth/deleteFamFriendRequest", data)
+      .post("https://famjam.onrender.com/auth/deleteFamFriendRequest", data)
       .then((res) => {
         toast("Rejected", {
           icon: "❌",
@@ -290,14 +290,14 @@ export const acceptFamFriendRequest =
     };
 
     await axios
-      .post("https://famjams.herokuapp.com/auth/acceptFamFriendRequest", data)
+      .post("https://famjam.onrender.com/auth/acceptFamFriendRequest", data)
       .then(async (res) => {
         toast("Accepted", {
           icon: "✅",
         });
         await axios
           .post(
-            "https://famjams.herokuapp.com/auth/chatConversation",
+            "https://famjam.onrender.com/auth/chatConversation",
             conversationData
           )
           .then((resp) => {})
@@ -330,7 +330,7 @@ export const userProfileEdit =
       profilePicUrl: profilePicUrl,
     };
     await axios
-      .put(`https://famjams.herokuapp.com/auth/editUserProfile/${userId}`, data)
+      .put(`https://famjam.onrender.com/auth/editUserProfile/${userId}`, data)
       .then((res) => {
         toast.success("Updated Successfully");
       })
@@ -343,7 +343,7 @@ export const updateNewFamies =
     const data = {
       newFamies: newFamies,
     };
-    await axios.put(`https://famjams.herokuapp.com/auth/updateFamies/${userId}`,data)
+    await axios.put(`https://famjam.onrender.com/auth/updateFamies/${userId}`,data)
     .then(res=>{
       toast.success(`Successfully transfered ${nfamies} famies`)
 
@@ -358,7 +358,7 @@ export const updateFamiesDay =
       newDay: newDay,
     };
     await axios
-      .put(`https://famjams.herokuapp.com/auth/updateFamiesDay/${userId}`, data)
+      .put(`https://famjam.onrender.com/auth/updateFamiesDay/${userId}`, data)
       .then((res) => {
         setTimeout(() => {
           window.location.pathname = "/dashboard";
@@ -371,7 +371,7 @@ export const updateFamiesDay =
 
   export const getVideoCallFriendProfile=(friendId:any)=>async(dispatch:any)=>{
     await axios
-    .get(`https://famjams.herokuapp.com/auth/getFriendProfile/${friendId}`)
+    .get(`https://famjam.onrender.com/auth/getFriendProfile/${friendId}`)
     .then(res=>{
       dispatch({
         type: GET_VIDEOCALL_FRIEND_PROFILE,
@@ -397,9 +397,9 @@ export const updateFamiesDay =
     const newData={
       rdData:rd
     }
-    await axios.put(`https://famjams.herokuapp.com/auth/updateFamies/${userId}`,data)
+    await axios.put(`https://famjam.onrender.com/auth/updateFamies/${userId}`,data)
     .then(async(res)=>{
-      await axios.put(`https://famjams.herokuapp.com/auth/updateFamTags/${userId}`,newData)
+      await axios.put(`https://famjam.onrender.com/auth/updateFamTags/${userId}`,newData)
       .then(resp=>{
         
         toast.success("Successfully purchased")
@@ -418,13 +418,13 @@ export const updateFamiesDay =
 
   export const createNewFamZone=(userId:any,famZoneData:any)=>async(dispatch:any)=>{
     await axios
-    .post("https://famjams.herokuapp.com/auth/createNewFamZone",famZoneData)
+    .post("https://famjam.onrender.com/auth/createNewFamZone",famZoneData)
     .then(async(res)=>{
      let data={
        createdFamZoneData:res.data,
        userId:userId
      }
-      await axios.post("https://famjams.herokuapp.com/auth/updateFamZoneDetailsInUsers",data)
+      await axios.post("https://famjam.onrender.com/auth/updateFamZoneDetailsInUsers",data)
       .then(resp=>{
         toast.success("Successfully created")
         setTimeout(()=>{
@@ -440,7 +440,7 @@ export const updateFamiesDay =
 
   export const getMyFamZones=(userId:any)=>async(dispatch:any)=>{
     await axios
-    .get(`https://famjams.herokuapp.com/auth/getFamZones/${userId}`)
+    .get(`https://famjam.onrender.com/auth/getFamZones/${userId}`)
     .then(res=>{
      
       dispatch({
@@ -453,7 +453,7 @@ export const updateFamiesDay =
   }
   export const getIndividualFamZone=(famZoneId:any)=>async(dispatch:any)=>{
     await axios
-    .get(`https://famjams.herokuapp.com/auth/getIndividualFamZone/${famZoneId}`)
+    .get(`https://famjam.onrender.com/auth/getIndividualFamZone/${famZoneId}`)
     .then(res=>{
      
       dispatch({
@@ -468,7 +468,7 @@ export const updateFamiesDay =
 
   export const getParticularFamZoneMembers=(famZoneId:any)=>async(dispatch:any)=>{
     await axios
-    .get(`https://famjams.herokuapp.com/auth/getParticularFamZoneMembers/${famZoneId}`)
+    .get(`https://famjam.onrender.com/auth/getParticularFamZoneMembers/${famZoneId}`)
     .then(res=>{
      
       dispatch({
