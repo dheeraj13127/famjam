@@ -10,7 +10,7 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
-    "@types/react-sidebar": "^3.0.2",
+    
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
@@ -35,7 +35,7 @@
     "react-share": "^4.4.0",
     "react-text-typist": "^1.0.9",
     "react-toastify": "^8.2.0",
-    "react-wheel-of-prizes": "^1.0.9",
+    
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "semantic-ui-css": "^2.4.1",
