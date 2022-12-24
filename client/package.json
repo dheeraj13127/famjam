@@ -75,7 +75,7 @@
     ]
   },
   "devDependencies": {
-    "@types/jquery": "^3.5.14",
-    "react-side-bar": "^1.0.4"
+    "@types/jquery": "^3.5.14"
+    
   }
 }
