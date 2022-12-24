@@ -14,7 +14,7 @@ function GoogleSignUp() {
     })
     await axios({
       method: "POST",
-      url: "https://famjams.herokuapp.com/auth/googleSignUp",
+      url: "https://famjam.onrender.com/auth/googleSignUp",
       data: { tokenId: resp.tokenId },
     })
       .then((res) => {

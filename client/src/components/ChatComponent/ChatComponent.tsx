@@ -21,7 +21,7 @@ function ChatComponent({ message, setMessage,activateMessage,onlineUsers,setOnli
   const scrollRef = useRef<any>();
   const socket=useRef<any>()
   useEffect(()=>{
-    socket.current=io("https://famjams.herokuapp.com")
+    socket.current=io("https://famjam.onrender.com")
     
     socket.current.on("getMessage",(data:any)=>{
       

@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Image, Header, Icon, Button } from "semantic-ui-react";
 import "../../../styles/LandingStyles/HeroSection.scss";
 import landingHero from "../../../assets/other/heroLanding.png";
-import Typist from "react-text-typist";
 import { motion } from "framer-motion";
 import famjam from '../../../assets/logos/famjamlogo.png'
 
@@ -30,14 +29,8 @@ function HeroSection() {
             textAlign="center"
           >
             <Header as="h1" textAlign="center" className="heroSectionHeader">
-            <span style={{color:"#5227D1"}}>Welcome to</span> &nbsp; 
-              <Typist
-                sentences={[`FamJam `]}
-                loop={true}
-                typingSpeed={80}
-                deletingSpeed={80}
-                cursorSmooth={true}
-              />
+            Welcome to <span style={{color:"#5227D1"}}>FamJam</span> &nbsp; 
+             
              
 
             </Header>
@@ -76,14 +69,8 @@ function HeroSection() {
             textAlign="center"
           >
             <Header as="h1" textAlign="center" className="heroSectionHeader">
-            <span style={{color:"#5227D1"}}>Welcome to</span> &nbsp;<br/> 
-              <Typist
-                sentences={[`FamJam `]}
-                loop={true}
-                typingSpeed={80}
-                deletingSpeed={80}
-                showCursor={false}
-              />
+            Welcome to <span style={{color:"#5227D1"}}>FamJam</span> &nbsp;<br/> 
+             
             </Header>
             <Header as="h3" className="headerSectionInfo">
                 Wanna connect to your family and friends in a unique and fun way ?
